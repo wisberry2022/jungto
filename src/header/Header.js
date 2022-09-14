@@ -72,7 +72,7 @@ const Header = () => {
       <TopInfo />
       <h1>
         <Link to="/">
-          <img src="./logo.png" alt="hello" />
+          <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="hello" />
         </Link>
       </h1>
       <GNB menu={multi_menu} />
