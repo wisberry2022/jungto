@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/wisberry2022/jungto.git/static/css/main.c58e7c6a.css",
-    "main.js": "/wisberry2022/jungto.git/static/js/main.70913937.js",
+    "main.js": "/wisberry2022/jungto.git/static/js/main.440be6b0.js",
     "static/js/787.73625a13.chunk.js": "/wisberry2022/jungto.git/static/js/787.73625a13.chunk.js",
     "static/media/menu_img_02.jpg": "/wisberry2022/jungto.git/static/media/menu_img_02.39aca918ccefc82f23da.jpg",
     "static/media/book_08.jpg": "/wisberry2022/jungto.git/static/media/book_08.310b02781f18b4b4397b.jpg",
@@ -38,11 +38,11 @@
     "static/media/donation_01.jpg": "/wisberry2022/jungto.git/static/media/donation_01.52876ab46c61263f6821.jpg",
     "index.html": "/wisberry2022/jungto.git/index.html",
     "main.c58e7c6a.css.map": "/wisberry2022/jungto.git/static/css/main.c58e7c6a.css.map",
-    "main.70913937.js.map": "/wisberry2022/jungto.git/static/js/main.70913937.js.map",
+    "main.440be6b0.js.map": "/wisberry2022/jungto.git/static/js/main.440be6b0.js.map",
     "787.73625a13.chunk.js.map": "/wisberry2022/jungto.git/static/js/787.73625a13.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c58e7c6a.css",
-    "static/js/main.70913937.js"
+    "static/js/main.440be6b0.js"
   ]
 }
