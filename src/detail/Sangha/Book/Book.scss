@@ -1,0 +1,61 @@
+.book {
+  padding: 0 0 15rem 0;
+
+  .container {
+    .book_box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5.5rem;
+      margin-bottom: 5rem;
+      padding: 4rem 0;
+
+      .book_intro {
+        text-align: center;
+
+        @for $i from 1 through 8 {
+          .itm0#{$i} {
+            background-image:url('./book_0#{$i}.jpg');
+          }
+        }
+
+        figure {
+          margin-bottom: 2.5rem;
+          width: 20rem;
+          height: 25rem;
+        }
+
+        strong {
+          display: block;
+          margin-bottom: 1rem;
+          font-size: 1.7rem;
+          font-weight: 600;
+        }
+
+        span {
+          display: block;
+          font-size: 1.2rem;
+          font-weight: 500;
+        }
+      }
+
+    }
+
+    .btn {
+      display: inline-block;
+      margin-left: 40%;
+      padding: 1.5rem 3rem;
+      font-size: 1.5rem;
+
+      span {
+        display: inherit;
+        margin-right: 2.7rem;
+      }
+
+      i {
+        display: inherit;
+        transform: translateY(12%);
+      }
+    }
+  }
+}

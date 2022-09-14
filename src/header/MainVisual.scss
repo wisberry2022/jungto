@@ -1,0 +1,137 @@
+.main_visual {
+  padding: 0;
+
+  .main_slider {
+    position: relative;
+
+    figure {
+      width: 100%;
+      height: 60rem;
+
+      &.itm03 {
+        .slogan_box {
+          top: 35%;
+          margin-left: 5.9%;
+
+          h2 {
+            text-align: center;
+          }
+
+          .btn {
+            margin-left: 34%;
+          }
+        }
+      }
+
+      .slogan_box {
+        position: absolute;
+        top: 35%;
+        margin-left: 36rem;
+
+        h2 {
+          margin-bottom: 3rem;
+          font-size: 3.6rem;
+          font-weight: 600;
+          line-height: 1.214;
+        }
+
+        p {
+          margin-bottom: 2.5rem;
+          font-size: 2.1rem;
+          font-weight: 400;
+        }
+
+        .btn {
+          padding: 1rem 2.5rem;
+          font-size: 1.5rem;
+          font-weight: 500;
+        }
+      }
+    }
+
+    @for $i from 1 through 3 {
+      .itm0#{$i} {
+        background-image: url('./header_bg_0#{$i}.jpg');
+      }
+    }
+
+    .sub_info {
+      position: absolute;
+      bottom: -10%;
+      right: 19%;
+      display: flex;
+
+      @for $i from 1 through 3 {
+        li .icon0#{$i} {
+          background-image: url('./icon_0#{$i}.png');
+        }
+      }
+
+      li {
+        position: relative;
+        width: 20rem;
+        height: 20rem;
+        background-color: #EE8545;
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 45%;
+          width: 0;
+          height: 0.1rem;
+          background-color: #eee;
+          transition: 1.5s cubic-bezier(0, -0.03, 0, 1.19);
+        }
+
+        &:hover::after {
+          width: 70%;
+        }
+
+        &.college {
+          background-color: #FF9A5C;
+        }
+
+        &.jts {
+          background-color: #EE8545;
+        }
+
+        &.sns {
+          background-color: #DE793A;
+        }
+
+        strong {
+          display: block;
+          margin: 2rem 0 2.5rem 0;
+          font-size: 1.9rem;
+          font-weight: 500;
+          text-align: center;
+        }
+
+        p {
+          margin-bottom: 2.5rem;
+          font-size: 1.5rem;
+          text-align: center;
+        }
+
+        .btn {
+          position: absolute;
+          bottom: 10%;
+          right: 10%;
+          border-bottom: 0.1rem solid #ddd;
+          padding-bottom: 0.5rem;
+          font-size: 1.6rem;
+          background: none;
+        }
+
+        >figure {
+          position: absolute;
+          left: 10%;
+          bottom: 10%;
+          width: 5rem;
+          height: 5rem;
+        }
+
+      }
+    }
+  }
+}

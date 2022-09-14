@@ -1,0 +1,90 @@
+.profile {
+  padding: 0;
+
+  .Active {
+    padding: 0;
+
+    .active_cm {
+      padding: 5rem 0;
+    }
+
+    li {
+      list-style-type: circle;
+      margin-left: 3rem;
+      font-size: 1.7rem;
+      font-weight: 400;
+      line-height: 4rem;
+    }
+
+    .current_active {
+      border-bottom: 0.1rem solid #ddd;
+
+      .container {
+        .intro {
+          .appoint {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 10rem;
+          }
+        }
+      }
+    }
+
+    .prize {
+      border-bottom: 0.1rem solid #ddd;
+
+      .container {
+        .awarding {
+          .prize_list {
+            span {
+              display: inline-block;
+
+              &.year {
+                margin-right: 3rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .main_active {
+
+      &.active_cm {
+        padding: 5rem 0 0 0;
+      }
+
+      .container {
+        .d_title {
+          margin-bottom: 5rem;
+
+          &::after {
+            width: 7.4%;
+          }
+        }
+
+        .active_box {
+          margin-bottom: 5rem;
+
+          .m_title {
+            position: relative;
+            margin: 0 0 1rem 1rem;
+            font-size: 2rem;
+            font-weight: 600;
+
+            &::before {
+              content: '';
+              position: absolute;
+              top: 10%;
+              left: -0.8rem;
+              width: 0.2rem;
+              height: 1.7rem;
+              background-color: #EE8545;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+.Intro {
+
+  .container {
+    .d_title {
+      font-size: 3.2rem;
+      font-weight: 700;
+    }
+
+    .intro_box {
+
+      .left {
+        float: left;
+        width: 50%;
+
+        .desc {
+          margin-bottom: 6rem;
+
+          >strong {
+            display: block;
+            margin-bottom: 5rem;
+            font-size: 2.5rem;
+            font-weight: 500;
+            line-height: 1.314;
+          }
+
+          p {
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            line-height: 1.4;
+
+            &.color {
+              color: #EE8545;
+            }
+          }
+        }
+
+        h3 {
+          position: relative;
+          margin-bottom: 3.5rem;
+          font-size: 2.3rem;
+          font-weight: 600;
+
+          &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -40%;
+            width: 6.5%;
+            height: 0.2rem;
+            background-color: #EE8545;
+          }
+        }
+
+        .sangha {
+          li {
+            margin-left: 2rem;
+            list-style-type: circle;
+            font-size: 1.5rem;
+            line-height: 2.7rem;
+
+            .title {
+              margin-right: 3rem;
+              font-weight: 500;
+
+            }
+
+            &:last-child {
+              list-style-type: none;
+
+              .title {
+                opacity: 0;
+              }
+            }
+
+          }
+        }
+
+      }
+
+      .right {
+        float: left;
+        width: 50%;
+        height: 60rem;
+        background-image: url('./detail_01.jpg');
+      }
+
+
+    }
+  }
+}

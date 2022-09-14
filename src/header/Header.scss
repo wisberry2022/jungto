@@ -1,0 +1,138 @@
+.header {
+  .top_info {
+    border-bottom: 0.1rem solid #eee;
+
+    .list_box {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 auto;
+      width: 120rem;
+
+      ul {
+        display: flex;
+        gap: 1.5rem;
+
+        .box {
+          font-size: 1.3rem;
+          font-weight: 400;
+          line-height: 3rem;
+        }
+      }
+    }
+  }
+
+  h1 {
+    border-bottom: 0.1rem solid #eee;
+    padding: 2rem 0;
+    text-align: center;
+  }
+
+  .gnb {
+    border-bottom: 0.1rem solid #eee;
+
+    .top_menu {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 auto;
+      width: 120rem;
+
+      .main_menu {
+        display: flex;
+
+        .main_list {
+          >a {
+            position: relative;
+            display: block;
+            margin-left: -4rem;
+            padding: 2.5rem 4rem;
+            font-size: 2rem;
+            font-weight: 500;
+
+            &.active {
+              border-bottom: 0.1rem solid #DE793A;
+              color: #DE793A;
+            }
+          }
+
+          // * {
+          //   outline: 1px solid #000;
+          // }
+
+          .main_box {
+            position: absolute;
+            left: 0;
+            z-index: 999;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+
+            .sub_box {
+              display: flex;
+              margin-left: 18.5%;
+              padding: 3.5rem 0 0 0;
+
+              strong {
+                margin-right: 9rem;
+                width: 13rem;
+                font-size: 2.1rem;
+                font-weight: 500;
+              }
+
+              .sub_menu {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                width: 60rem;
+
+                .sub_list {
+                  align-self: baseline;
+
+                  a {
+                    display: block;
+                    width: 15rem;
+                    font-size: 1.5rem;
+                    line-height: 1.4;
+                  }
+                }
+              }
+
+              @for $i from 1 through 5 {
+                .itm0#{$i} {
+                  background-image: url('./menu_img_0#{$i}.jpg');
+                }
+              }
+
+              figure {
+                position: absolute;
+                top: 0;
+                left: 60%;
+                width: 30rem;
+                height: 30rem;
+              }
+            }
+          }
+
+          &:hover {
+            .main_box {
+              border-top: 0.1rem solid #eee;
+              border-bottom: 0.1rem solid #eee;
+              height: 30rem;
+              background-color: #fff;
+            }
+          }
+        }
+      }
+
+      .side_menu {
+        display: flex;
+        gap: 1.5rem;
+
+        li {
+          font-size: 2rem;
+          padding: 2.5rem 0;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

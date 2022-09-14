@@ -1,0 +1,106 @@
+// * {
+//   outline: 1px solid #000;
+// }
+
+.practice {
+  padding: 15rem 0 10rem 0;
+
+  .container {
+    display: flex;
+
+    .intro_desc {
+      padding: 1rem;
+      width: 40%;
+
+      .title_box {
+        margin: 2.5rem 0 6rem 0;
+        text-align: left;
+      }
+
+      .desc_box {
+        margin-bottom: 6rem;
+
+        strong {
+          display: block;
+          position: relative;
+          margin-bottom: 3rem;
+          font-size: 2.1rem;
+          font-weight: 600;
+
+          &::after {
+            content: '';
+            position: absolute;
+            top: 150%;
+            left: 0;
+            width: 20%;
+            height: 0.2rem;
+            background-color: #EE8545;
+          }
+        }
+
+        p {
+          font-size: 1.5rem;
+          font-weight: 400;
+          line-height: 1.253;
+
+          &.f_desc {
+            margin-bottom: 1rem;
+          }
+        }
+      }
+
+      .sub_box {
+        h4 {
+          margin-bottom: 2.5rem;
+          font-size: 2.1rem;
+          font-weight: 600;
+        }
+
+        .list {
+          border: 0.1rem solid #EE8545;
+          background-color: #f9f9f9;
+
+          li {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 0.1rem solid #eee;
+            padding: 1.2rem 0 1.2rem 1.2rem;
+            font-size: 1.5rem;
+            font-weight: 400;
+
+            strong {
+              display: inline-block;
+              transform: translateY(20%);
+            }
+
+            i {
+              margin-right: 1.2rem;
+              border-radius: 50%;
+              border: none;
+              padding: 0.5rem;
+              background-color: #ddd;
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .intro_image {
+    display: grid;
+    grid-template-columns: 49% 49%;
+    grid-template-rows: 49% 49%;
+    gap: 1rem;
+
+    padding: 1rem;
+    width: 60%;
+    height: 60rem;
+
+    @for $i from 1 through 4 {
+      figure.itm0#{$i} {
+        background-image: url('./practice_0#{$i}.jpg');
+      }
+    }
+  }
+}

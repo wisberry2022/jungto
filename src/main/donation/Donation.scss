@@ -1,0 +1,119 @@
+// * {
+//   outline: 1px solid #000;
+// }
+
+.donation {
+  background-color: #f9f9f9;
+
+  .contents {
+    .container {
+      margin: 0 0 0 auto;
+      width: 155rem;
+
+      .subscribe {
+        float: left;
+        border: 0.1rem solid #ddd;
+        padding: 3rem;
+        width: 25%;
+        // background-color: #EE8545;
+
+        h4 {
+          margin-bottom: 5rem;
+          font-size: 2.5rem;
+          font-weight: 500;
+          text-align: left;
+        }
+
+        form {
+          .name_ip,
+          .email_ip,
+          .hp_ip {
+            margin-bottom: 2rem;
+            
+            label {
+              display: inline-block;
+              width: 7rem;
+              font-size: 1.5rem;
+              font-weight: 400;
+            }
+
+            input {
+              border: none;
+              padding: 1.5rem 2rem;
+              width: 25rem;
+            }
+          }
+
+          .check_box {
+            display: flex;
+            margin-left: 25%;
+            margin-bottom: 3.7rem;
+            font-size: 1.5rem;
+
+            input {
+              margin: 0 2.5rem 0 1rem;
+            }
+          }
+          .btn_box {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+
+            button {
+              border: none;
+              padding: 1rem 3rem;
+              background-color: #EE8545;
+              font-size: 1.4rem;
+              font-weight: 500;
+              cursor: pointer;
+            }
+          }
+          
+        }
+      }
+
+      .donate_slider {
+        float: left;
+        display: flex;
+        gap: 2.5rem;
+        margin: 0 0 0 2.5rem;
+        width: 70%;
+
+          .donate_desc {
+            padding: 1.5rem;
+            width: 30rem;
+            height: 41.1rem;
+            background-color: #fff;
+
+            strong {
+              display: block;
+              margin-bottom: 0.5rem;
+              font-size: 1.5rem;
+              font-weight: 500;
+              text-align: center;
+            }
+
+            figure {
+              margin-bottom: 1.5rem;
+              height: 30rem;
+            }
+
+            p {
+              text-align: center;
+              font-size: 1.4rem;
+              line-height: 1.213;
+              font-weight: 400;
+            }
+  
+            @for $i from 1 through 6 {
+              .itm0#{$i} {
+                background-image: url('./donation_0#{$i}.jpg');
+              }
+            }
+            
+          }
+          
+        }
+      }
+    }
+  }
