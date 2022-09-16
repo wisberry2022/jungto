@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/jungto/static/css/main.1b939bfd.css",
-    "main.js": "/jungto/static/js/main.9ba3df30.js",
+    "main.js": "/jungto/static/js/main.08b2448e.js",
     "static/js/787.73625a13.chunk.js": "/jungto/static/js/787.73625a13.chunk.js",
     "static/media/menu_img_02.jpg": "/jungto/static/media/menu_img_02.39aca918ccefc82f23da.jpg",
     "static/media/book_08.jpg": "/jungto/static/media/book_08.310b02781f18b4b4397b.jpg",
@@ -38,11 +38,11 @@
     "static/media/donation_01.jpg": "/jungto/static/media/donation_01.52876ab46c61263f6821.jpg",
     "index.html": "/jungto/index.html",
     "main.1b939bfd.css.map": "/jungto/static/css/main.1b939bfd.css.map",
-    "main.9ba3df30.js.map": "/jungto/static/js/main.9ba3df30.js.map",
+    "main.08b2448e.js.map": "/jungto/static/js/main.08b2448e.js.map",
     "787.73625a13.chunk.js.map": "/jungto/static/js/787.73625a13.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1b939bfd.css",
-    "static/js/main.9ba3df30.js"
+    "static/js/main.08b2448e.js"
   ]
 }
