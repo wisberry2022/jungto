@@ -27,7 +27,7 @@ const GNB = ({ menu }) => {
           {menu.map((el, idx) => {
             return (
               <li key={idx} className="main_list">
-                <NavLink to={el.link} activeclassname="active">{el.menu}</NavLink>
+                <NavLink to={el.link} activeClassName="active">{el.menu}</NavLink>
                 <div className="main_box">
                   <div className="sub_box">
                     <strong>{el.menu}</strong>

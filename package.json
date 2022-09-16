@@ -2,7 +2,7 @@
   "name": "jungto",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/wisberry2022/jungto.git",
+  "homepage": "https://wisberry2022.github.io/jungto/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
