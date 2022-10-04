@@ -51,7 +51,7 @@
 
     @for $i from 1 through 3 {
       .itm0#{$i} {
-        background-image: url('./header_bg_0#{$i}.jpg');
+        background-image: url('../../public/header_bg_0#{$i}.jpg');
       }
     }
 
@@ -63,7 +63,7 @@
 
       @for $i from 1 through 3 {
         li .icon0#{$i} {
-          background-image: url('./icon_0#{$i}.png');
+          background-image: url('../../public/icon_0#{$i}.png');
         }
       }
 

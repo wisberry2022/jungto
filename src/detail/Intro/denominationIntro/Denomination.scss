@@ -1,0 +1,49 @@
+@import '../../commonCss/detailCommon.scss';
+
+.denomination_intro {
+  border-bottom: 0.1rem solid #ddd;
+
+  .container {
+    .title_box {
+      margin-bottom: 8rem;
+      text-align: left;
+
+      h3 {
+        @include title_deco(5.5%);
+      }
+    }
+
+    .desc_box {
+      display: flex;
+      gap: 6rem;
+
+      .left {
+        padding: 1.5rem 0;
+
+        .semi_title {
+          h4 {
+            @include semiTitle;
+          }
+
+          .phase {
+            @include phase;
+
+            span {
+              @include emphasize;
+            }
+          }
+        }
+      }
+
+      .right {
+        flex: 1;
+
+        figure {
+          width: 100%;
+          height: 100%;
+          background-image: url('../../../../public/denominatino_01.jpg');
+        }
+      }
+    }
+  }
+}

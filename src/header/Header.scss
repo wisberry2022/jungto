@@ -54,10 +54,6 @@
             }
           }
 
-          // * {
-          //   outline: 1px solid #000;
-          // }
-
           .main_box {
             position: absolute;
             left: 0;
@@ -98,7 +94,7 @@
 
               @for $i from 1 through 5 {
                 .itm0#{$i} {
-                  background-image: url('./menu_img_0#{$i}.jpg');
+                  background-image: url('../../public/menu_img_0#{$i}.jpg');
                 }
               }
 

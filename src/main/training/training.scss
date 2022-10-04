@@ -1,86 +1,82 @@
-      // * {
-      //   outline: 1px solid #000;
-      // }
+.training {
+  .container {
+    .title_box {
+      margin-bottom: 7.5rem;
+      text-align: right;
+    }
 
-      .training {
-        .container {
-          .title_box {
-            margin-bottom: 7.5rem;
-            text-align: right;
-          }
+    .train_list {
+      float: left;
+      width: 20%;
 
-          .train_list {
-            float: left;
-            width: 20%;
+      li {
+        border-bottom: 0.1rem solid #D4E6BE;
+        padding: 1.5rem 0 1.5rem 0.8rem;
+        font-size: 1.8rem;
+        font-weight: 400;
+        text-align: left;
+        cursor: pointer;
+      }
 
-            li {
-              border-bottom: 0.1rem solid #D4E6BE;
-              padding: 1.5rem 0 1.5rem 0.8rem;
-              font-size: 1.8rem;
-              font-weight: 400;
-              text-align: left;
-              cursor: pointer;
-            }
+      li.click {
+        background-color: #D4E6BE;
+      }
+    }
 
-            li.click {
-              background-color: #D4E6BE;
-            }
-          }
+    .train_desc {
+      float: left;
+      margin: 1rem 0 0 6rem;
+      width: 75%;
+      height: 50rem;
 
-          .train_desc {
-            float: left;
-            margin: 1rem 0 0 6rem;
-            width: 75%;
-            height: 50rem;
-
-            @for $i from 1 through 6 {
-              .itm0#{$i} {
-                background-image: url('./training_0#{$i}.jpg');
-              }
-            }
-
-            >figure {
-              margin-bottom: 4rem;
-              width: 100%;
-              height: 20rem;
-            }
-
-            h4 {
-              margin-bottom: 2rem;
-              font-size: 2.3rem;
-              font-weight: 700;
-            }
-
-            >strong {
-              display: block;
-              margin-bottom: 2rem;
-              font-size: 1.9rem;
-              font-weight: 500;
-            }
-
-            p {
-              margin-bottom: 4rem;
-              font-size: 1.5rem;
-              font-weight: 400;
-              line-height: 1.364;
-
-              span {
-                color: #EE8545;
-              }
-            }
-
-            .btn_box {
-              position: relative;
-
-              .btn {
-                margin-right: 1.5rem;
-                border: none;
-                padding: 1rem 2rem;
-                background: #EE8545;
-                font-size: 1.5rem;
-                cursor: pointer;
-              }
-            }
-          }
+      @for $i from 1 through 6 {
+        .itm0#{$i} {
+          background-image: url('../../../public/training_0#{$i}.jpg');
         }
       }
+
+      >figure {
+        margin-bottom: 4rem;
+        width: 100%;
+        height: 20rem;
+      }
+
+      h4 {
+        margin-bottom: 2rem;
+        font-size: 2.3rem;
+        font-weight: 700;
+      }
+
+      >strong {
+        display: block;
+        margin-bottom: 2rem;
+        font-size: 1.9rem;
+        font-weight: 500;
+      }
+
+      p {
+        margin-bottom: 4rem;
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 1.364;
+
+        span {
+          color: #EE8545;
+        }
+      }
+
+      .btn_box {
+        position: relative;
+
+        .btn {
+          margin-right: 1.5rem;
+          border: none;
+          padding: 1rem 2rem;
+          background: #EE8545;
+          font-size: 1.5rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

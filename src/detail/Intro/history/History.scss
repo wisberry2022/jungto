@@ -1,0 +1,160 @@
+@import '../../commonCss/detailCommon.scss';
+
+.history {
+  .container {
+    .title_box {
+      margin-bottom: 6rem;
+      text-align: center;
+
+      h3 {
+        @include title_deco(4.3%);
+
+        &::after {
+          left: 46%;
+        }
+      }
+    }
+
+    .history_box {
+      position: relative;
+
+      .navigation {
+        display: flex;
+        justify-content: center;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        margin: 0 auto 8rem auto;
+        border-bottom: 0.1rem solid #ddd;
+        background-color: #fff;
+
+        >li {
+          display: block;
+          position: relative;
+          padding: 1.5rem 10rem;
+          font-size: 1.7rem;
+          font-weight: 400;
+          text-align: left;
+          cursor: pointer;
+
+
+          &:nth-child(-n+3)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0%;
+            transform: translateY(-50%);
+            width: 0.1rem;
+            height: 1.5rem;
+            background-color: #ddd;
+          }
+
+          &.on {
+            outline: 0.3rem solid $mc;
+            border-radius: 3rem;
+            color: $mc;
+          }
+        }
+      }
+
+      .contents {
+        .logo {
+          margin: 0 auto 2rem auto;
+          transform: translateX(10%);
+          width: 5rem;
+          height: 5rem;
+          background-image: url('../../../../public/detail_logo.png');
+        }
+
+        .history_box {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50.3745%;
+            width: 0.1rem;
+            height: 100%;
+            background-color: #ddd;
+          }
+
+          @for $i from 1 through 25 {
+            .history#{$i} {
+              background-image: url('../../../../public/history_#{$i}.jpg');
+            }
+          }
+
+          .template {
+            display: flex;
+            justify-content: space-between;
+            margin: 6rem auto;
+            width: 90rem;
+
+            .left_contents {
+              width: 50%;
+
+              >figure {
+                width: 90%;
+                height: 30rem;
+              }
+            }
+
+            .right_contents {
+              padding-top: 10rem;
+              width: 44%;
+
+              h5 {
+                position: relative;
+                margin-bottom: 4rem;
+                font-size: 2.5rem;
+                font-weight: 600;
+
+                &::after {
+                  content: '';
+                  position: absolute;
+                  left: -12.5%;
+                  bottom: -40%;
+                  width: 50%;
+                  height: 0.1rem;
+                  background-color: $mc;
+                }
+              }
+
+              .month_active {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                font-size: 1.4rem;
+
+                .detail_active {
+                  display: flex;
+                  gap: 2.5rem;
+
+                  strong {
+                    display: block;
+                    font-size: 1.6rem;
+                    font-weight: 500;
+                  }
+
+                  .main_active {
+                    >li {
+                      line-height: 1.4;
+                    }
+                  }
+                }
+              }
+
+
+            }
+
+
+          }
+        }
+
+      }
+    }
+  }
+}

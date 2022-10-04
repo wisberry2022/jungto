@@ -99,7 +99,7 @@
 
     @for $i from 1 through 4 {
       figure.itm0#{$i} {
-        background-image: url('./practice_0#{$i}.jpg');
+        background-image: url('../../../public/practice_0#{$i}.jpg');
       }
     }
   }
