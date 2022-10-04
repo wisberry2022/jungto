@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState, useCallback } from 'react';
 import './History.scss';
 import { useSelector } from 'react-redux';
 
@@ -39,13 +39,14 @@ const TemplateContents = forwardRef((props, ref) => {
 })
 
 const Contents = ({ bottomUp }) => {
+  const [init, setInit] = useState();
+
   const parentPoint = useRef();
   const firstPoint = useRef();
   const secondPoint = useRef();
   const thirdPoint = useRef();
   const fourthPoint = useRef();
 
-  const parentPhase = parentPoint.current;
   const firstPhase = firstPoint.current;
   const secondPhase = secondPoint.current;
   const thirdPhase = thirdPoint.current;
@@ -53,15 +54,21 @@ const Contents = ({ bottomUp }) => {
 
   const yearPhase = ['2019', '2014', '2004', '1994'];
 
+  const scrollHandling = useCallback(() => {
+    let list = [];
+    for (let data of [firstPhase, secondPhase, thirdPhase, fourthPhase]) {
+      list.push(window.scrollY + data.getBoundingClientRect().top)
+    }
+    bottomUp(list.reverse());
+  }, [firstPhase, secondPhase, thirdPhase, fourthPhase, bottomUp])
+
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      let list = [];
-      for (let data of [firstPhase, secondPhase, thirdPhase, fourthPhase]) {
-        list.push(window.scrollY + data.getBoundingClientRect().top)
-      }
-      bottomUp(list);
-    })
-  }, [parentPhase, firstPhase, secondPhase, thirdPhase, fourthPhase])
+    setInit(0);
+    window.addEventListener('scroll', scrollHandling);
+    return () => {
+      window.removeEventListener('scroll', scrollHandling);
+    }
+  }, [init, scrollHandling])
 
   const historyData = useSelector(state => state.history);
 
@@ -86,25 +93,62 @@ const HistoryBox = () => {
     { id: 3, title: '2005 ~ 2014' },
     { id: 4, title: '2015 ~ 현재' },
   ];
-  const [num, setNum] = useState(4);
+
   const [data, setData] = useState(0);
+  const navRef = useRef();
+  const navRef2 = useRef();
+  const navRef3 = useRef();
+  const navRef4 = useRef();
+
 
   const bottomUp = (data) => {
     setData(data);
   }
 
+  const toScroll = (yValue) => {
+    window.scrollTo({ left: 0, top: yValue, behavior: 'smooth' });
+  }
+
+  const classForeach = (elementArr, exceptionIdx) => {
+    elementArr.forEach((el, idx) => idx !== exceptionIdx ? el.classList.remove('on') : null
+    )
+  }
+
+  const scrollHandling = useCallback(() => {
+    const refList = [navRef.current, navRef2.current, navRef3.current, navRef4.current];
+    if (window.scrollY > data[3] && window.scrollY < data[2]) {
+      navRef.current.classList.add('on');
+      classForeach(refList, 0);
+    } else if (window.scrollY > data[2] && window.scrollY < data[1]) {
+      navRef2.current.classList.add('on');
+      classForeach(refList, 1);
+    } else if (window.scrollY > data[1] && window.scrollY < data[0]) {
+      navRef3.current.classList.add('on');
+      classForeach(refList, 2);
+    } else if (window.scrollY > data[0]) {
+      navRef4.current.classList.add('on');
+      classForeach(refList, 3);
+    }
+  }, [data])
+
+  useEffect(() => {
+    window.addEventListener('scroll', scrollHandling);
+    return () => {
+      window.removeEventListener('scroll', scrollHandling);
+    }
+  }, [data, scrollHandling])
+
   return (
     <div className="history_box">
-      {console.log(data)}
       <ul className="navigation">
         {navList.map(it => {
           return (
-            <li key={it.id} onClick={() => (setNum(it.id))} className={num === it.id ? 'on' : ''}>{it.title}</li>
+            <li key={it.id} onClick={() => (toScroll(data[it.id - 1]))}  {...(it.id === 4 ? { ref: navRef } : it.id === 3 ? { ref: navRef2 } : it.id === 2 ? { ref: navRef3 } : it.id === 1 ? { ref: navRef4 } : {})}>{it.title}</li>
           )
         })}
       </ul>
       <Contents bottomUp={bottomUp} />
-    </div>
+    </div >
   )
 }
 
