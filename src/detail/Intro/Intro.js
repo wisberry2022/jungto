@@ -1,4 +1,3 @@
-import './Intro.scss';
 import Denomination from './denominationIntro/Denomination';
 import CiIntro from './CI/CiIntro';
 import History from './history/History';

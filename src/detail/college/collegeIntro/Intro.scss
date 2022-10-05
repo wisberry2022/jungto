@@ -1,0 +1,55 @@
+@import '../../commonCss/detailCommon.scss';
+
+.college_intro {
+  border-bottom: 0.1rem solid #ddd;
+
+  .container {
+    .title_box {
+      margin-bottom: 10rem;
+
+      h3 {
+        @include title_deco(4%);
+      }
+
+      p {
+        @include subDesc;
+      }
+    }
+
+    .active_box {
+      .active_title {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+
+        h4 {
+          margin-bottom: 1.5rem;
+          font-size: 2rem;
+          font-weight: 500;
+        }
+
+        .btn {
+          padding: 1rem 2rem;
+          font-size: 1.5rem;
+        }
+      }
+
+      .img_box {
+        display: flex;
+        gap: 2.5rem;
+
+
+        @for $i from 1 through 3 {
+          .img0#{$i} {
+            background-image: url('../../../../public/college_intro_0#{$i}.jpg');
+          }
+        }
+
+        >figure {
+          width: 40rem;
+          height: 30rem;
+        }
+      }
+    }
+  }
+}

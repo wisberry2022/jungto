@@ -1,0 +1,67 @@
+@import '../../commonCss/detailCommon.scss';
+
+.degree {
+  border-bottom: 0.1rem solid #ddd;
+
+  .container {
+    .semi_title {
+      margin-bottom: 3rem;
+
+      h4 {
+        @include semiTitle;
+      }
+    }
+
+    .degree_intro {
+      strong {
+        display: block;
+        margin-bottom: 3rem;
+        font-size: 1.7rem;
+        font-weight: 400;
+      }
+
+      table {
+        margin-bottom: 5rem;
+        border-top: 0.2rem solid #000;
+
+        thead {
+          display: none;
+        }
+
+        tbody {
+          td {
+            padding: 2rem 0;
+            border-bottom: 0.1rem solid #ddd;
+            font-size: 1.6rem;
+
+            &.title {
+              width: 15%;
+              font-weight: 600;
+              background-color: #f9f9f9;
+              text-align: center;
+            }
+
+            &.desc {
+              padding-left: 3rem;
+
+              .desc_list {
+                padding: .5rem 0;
+
+                >li {
+                  line-height: 1.5;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .btn {
+      margin-left: 45%;
+      padding: 1.5rem 3rem;
+      font-size: 1.9rem;
+      background-color: $bc;
+    }
+  }
+}

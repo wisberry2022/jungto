@@ -1,0 +1,59 @@
+@import '../../commonCss/detailCommon.scss';
+
+.practice_intro {
+  border-bottom: 0.1rem solid #ddd;
+
+  .container {
+    .title_box {
+      margin-bottom: 10rem;
+
+      h3 {
+        @include title_deco(4.5%);
+      }
+
+      p {
+        @include subDesc;
+      }
+    }
+
+    .practice_desc_list {
+      display: flex;
+      gap: 2.5rem;
+
+      @for $i from 1 through 4 {
+        .itm0#{$i} {
+          background-image: url('../../../../public/practice_intro_0#{$i}.jpg');
+        }
+      }
+
+      >li {
+        flex: 1;
+        padding: 3rem;
+        background-color: $sc;
+
+        >figure {
+          margin-bottom: 3rem;
+          height: 20rem;
+        }
+
+        .desc_box {
+          strong {
+            display: block;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.9rem;
+            font-weight: 500;
+          }
+
+          p {
+            font-size: 1.4rem;
+            line-height: 1.3;
+            text-align: center;
+            word-break: keep-all;
+          }
+        }
+      }
+    }
+
+  }
+}

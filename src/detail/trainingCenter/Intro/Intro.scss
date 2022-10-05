@@ -1,0 +1,59 @@
+@import '../../commonCss/detailCommon.scss';
+
+.train_intro {
+  border-bottom: 0.1rem solid #ddd;
+
+  .container {
+    .title_box {
+      margin-bottom: 5rem;
+
+      h3 {
+        @include title_deco(9%);
+      }
+
+      p {
+        @include subDesc;
+      }
+    }
+
+    >figure {
+      margin-bottom: 4rem;
+      height: 30rem;
+      background-image: url('../../../../public/train_intro_01.jpg');
+      background-position-y: 85%;
+    }
+
+    .intro_list {
+      text-indent: 1%;
+
+      >li {
+        margin-bottom: 3rem;
+
+        h5 {
+          position: relative;
+          margin-bottom: 2rem;
+          font-size: 2.3rem;
+          font-weight: 500;
+
+          &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 0.2rem;
+            height: 100%;
+            background-color: $mc;
+          }
+        }
+
+        .sub_list {
+          text-indent: 0;
+
+          >li {
+            line-height: 1.4;
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+}

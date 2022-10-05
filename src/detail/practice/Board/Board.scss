@@ -1,0 +1,26 @@
+@import '../../commonCss/detailCommon.scss';
+
+.board {
+  .container {
+    .semi_title {
+      margin-bottom: 10rem;
+
+      h4 {
+        @include semiTitle;
+      }
+
+      p {
+        @include phase;
+      }
+    }
+
+    .board_box {
+      strong {
+        display: block;
+        margin-bottom: 2.5rem;
+        font-size: 2rem;
+        font-weight: 500;
+      }
+    }
+  }
+}
