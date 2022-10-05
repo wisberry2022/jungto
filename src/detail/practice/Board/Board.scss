@@ -15,11 +15,127 @@
     }
 
     .board_box {
+      position: relative;
+
       strong {
         display: block;
-        margin-bottom: 2.5rem;
+        margin-bottom: 1.5rem;
         font-size: 2rem;
         font-weight: 500;
+      }
+
+      table {
+        margin-bottom: 2.5rem;
+        border-top: 0.2rem solid #000;
+        border-bottom: 0.2rem solid #000;
+
+        thead {
+          border-bottom: 0.1rem solid #ddd;
+
+          tr {
+            th {
+              padding: 2.5rem 0;
+              font-size: 2rem;
+              font-weight: 500;
+
+              &.num {
+                width: 10%;
+              }
+
+              &.title {
+                width: 60%;
+              }
+
+              &.author {
+                width: 15%;
+              }
+
+              &.date {
+                width: 15%;
+              }
+            }
+          }
+        }
+
+        tbody {
+          tr {
+            position: relative;
+
+            .none_display {
+              height: 45rem;
+
+              .display_set {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                .img_box {
+                  position: relative;
+                  margin: 0 auto 3rem auto;
+                  border: 0.1rem solid #ddd;
+                  border-radius: 50%;
+                  padding: 4rem;
+                  width: 6rem;
+                  height: 6rem;
+
+                  img {
+                    display: block;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                  }
+                }
+
+                h5 {
+                  font-size: 2.5rem;
+                  font-weight: 300;
+                }
+              }
+
+            }
+
+            td {
+              border-bottom: 0.1rem solid #f9f9f9;
+              padding: 2.5rem 0;
+              font-size: 1.4rem;
+              font-weight: 400;
+              text-align: center;
+
+              &.title {
+                text-align: center;
+              }
+            }
+          }
+
+        }
+      }
+
+      .btn {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        align-items: center;
+        border: 0.2rem solid $mc;
+        border-radius: 3.5rem;
+        padding: 1rem 1.5rem;
+        margin-left: auto;
+        width: 12rem;
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: #333;
+        background-color: transparent;
+
+        >.icon {
+          width: 2.5rem;
+          height: 2.5rem;
+          background-image: url('../../../../public/board_icon.png');
+        }
+
+        span {
+          display: block;
+        }
       }
     }
   }
