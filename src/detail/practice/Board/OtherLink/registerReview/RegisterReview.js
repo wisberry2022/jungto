@@ -33,8 +33,8 @@ const FormBox = () => {
           <h5>본문</h5>
           <textarea placeholder="후기를 작성해주세요!" id="body" ref={bodyRef} required></textarea>
         </div>
-        <button type="submit" className="btn" onClick={() => (dispatch(getData([titleRef.current.value, authorRef.current.value, emailRef.current.value, pwdRef.current.value, bodyRef.current.value, today])))}>
-          <Link to="/mm_practice">등록하기</Link>
+        <button type="submit" className="btn">
+          <Link to="/mm_practice" onClick={() => (dispatch(getData([titleRef.current.value, authorRef.current.value, emailRef.current.value, pwdRef.current.value, bodyRef.current.value, today])))}>등록하기</Link>
         </button>
       </form>
     </div>
