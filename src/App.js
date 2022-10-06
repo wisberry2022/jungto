@@ -9,11 +9,11 @@ import Practice from './detail/practice/Practice';
 import Total from './Total';
 import Layout from './detail/Layout';
 
-
 function App() {
   return (
     <>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter>
+        {/* <BrowserRouter> */}
         <Routes>
           <Route path="/" element={<Total />} />
           <Route element={<Layout />}>

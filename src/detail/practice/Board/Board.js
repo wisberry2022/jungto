@@ -1,6 +1,6 @@
-import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import './Board.scss';
-import Test from './OtherLink/Test';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const NoneDisplay = () => {
   return (
@@ -18,8 +18,9 @@ const NoneDisplay = () => {
 }
 
 const BoardTemplate = ({ postingData }) => {
-  const theadList = ['번호', '제목', '작성자', '게시일자']
+  const theadList = ['번호', '제목', '작성자', '게시일자'];
   const theadClassList = ['num', 'title', 'author', 'date'];
+
   return (
     <table>
       <thead>
@@ -37,7 +38,7 @@ const BoardTemplate = ({ postingData }) => {
             return (
               <tr key={it.id}>
                 <td className="num">{it.id}</td>
-                <td className="title"><Link to="#">{it.title}</Link></td>
+                <td className="title"><Link to={`/mm_practice/post/${it.id}`}>{it.title}</Link></td>
                 <td className="author">{it.author}</td>
                 <td className="date">{it.date}</td>
               </tr>
@@ -51,8 +52,10 @@ const BoardTemplate = ({ postingData }) => {
 }
 
 const Board = () => {
+
+  // store에 접근하여 postingData에 전체 데이터를 가져옴
+  const examData = useSelector(state => state.review.board);
   const postingData = [];
-  const navigate = useNavigate();
   // const postingData = [
   //   { id: 1, title: '안녕하세요', author: '오수진', date: '2022-10-05' },
   //   { id: 2, title: '안녕하세요', author: '오수진', date: '2022-10-05' },
@@ -60,13 +63,11 @@ const Board = () => {
   //   { id: 4, title: '안녕하세요', author: '오수진', date: '2022-10-05' },
   // ];
 
-  const goNext = () => {
-    navigate('/mm_practice/test', { replace: true });
-  }
 
   return (
     <section className="board">
       <div className="container">
+        {console.log(examData)}
         <div className="semi_title">
           <h4>실천 기록장</h4>
           <p>
@@ -76,15 +77,13 @@ const Board = () => {
         <div className="board_box">
           <strong>게시판</strong>
           <BoardTemplate postingData={postingData} />
-          <Link to="/mm_practice/test" className="btn">
+          <Link to="/mm_practice/reviewRegister" className="btn">
             <figure className="bg_set icon"></figure>
             <span>글쓰기</span>
           </Link>
         </div>
       </div>
-      <Routes>
-        <Route path="test" element={<Test />} />
-      </Routes>
+
     </section>
   )
 }

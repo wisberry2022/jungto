@@ -1,0 +1,20 @@
+1. 게시글 등록 
+2. Redux store로 데이터 전송 with Thunk로 DB에 전송 
+3. DB 저장 
+4. Board.js에서 store에 접근하여 데이터 받아오기 
+5. 데이터 뿌려주기
+
+
+Board.js
+
+1. store에 접근하여 데이터 받아오기
+2. 받은 데이터 BoardTemplate props로 전달
+3. BoardTemplate 컴포넌트에서 props로 받은 데이터 뿌려주기
+
+RegisterReview => store로 보내기
+
+1. 제목, 이름, 이메일, 비밀번호, 본문 입력
+2. 등록하기 버튼 클릭(Store 전송)
+3. 아이디, 제목, 이름, 이메일, 비밀번호, 본문 한꺼번에 ADD 디스패치로 전송
+4. Reducers에서 state에 접근하여 새로운 정보 갱신
+	

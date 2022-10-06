@@ -1,4 +1,4 @@
-const Test = () => {
+const Post = () => {
   return (
     <div>
       hello
@@ -6,4 +6,4 @@ const Test = () => {
   )
 }
 
-export default Test;
+export default Post;
