@@ -1,7 +1,19 @@
-1. 게시글 등록 
-2. Redux store로 데이터 전송 with Thunk로 DB에 전송 
-3. DB 저장 
+1. 게시글 등록 o
+2. Redux store로 데이터 전송 with Thunk로 DB에 전송 o
+3. DB 저장 o
 4. Board.js에서 store에 접근하여 데이터 받아오기 
+	* 리덕스 툴킷을 사용하여 DB 접근
+		1) Board.js 컴포넌트 렌더링 시 useEffect 통해 리덕스 디스패치 실행
+		2) 디스패치 실행(미들웨어 사용)하여 서버로 GET 요청
+		3) 서버에서 GET 요청 받아 DB에 있는 모든 Document 조회
+		4) 결과 Document 프론트단으로 전송
+
+	* 컴포넌트에서 곧바로 DB에 접근
+		1) Board.js 컴포넌트 렌더링 시 useEffect 통해 axios.get으로 DB에 접근
+		2) 서버에서 GET 요청 받아 DB에 있는 모든 Document 조회
+		3) 결과 Document 프론트단으로 전송하여 useState 통해 컴포넌트 내 데이터로 전송
+		4) BoardTemplate 컴포넌트에 props로 전달
+		
 5. 데이터 뿌려주기
 
 

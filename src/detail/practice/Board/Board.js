@@ -1,6 +1,8 @@
 import './Board.scss';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 const NoneDisplay = () => {
   return (
@@ -55,6 +57,7 @@ const Board = () => {
 
   // store에 접근하여 postingData에 전체 데이터를 가져옴
   const examData = useSelector(state => state.review.board);
+  const dispatch = useDispatch();
   const postingData = [];
   // const postingData = [
   //   { id: 1, title: '안녕하세요', author: '오수진', date: '2022-10-05' },
@@ -63,11 +66,15 @@ const Board = () => {
   //   { id: 4, title: '안녕하세요', author: '오수진', date: '2022-10-05' },
   // ];
 
+  useEffect(() => {
+    // DB에 직접 접근
+    axios.get('/mm')
+  }, [examData])
 
   return (
     <section className="board">
       <div className="container">
-        {console.log(examData)}
+        {console.log(`boardJs 내부!:`, examData)}
         <div className="semi_title">
           <h4>실천 기록장</h4>
           <p>
