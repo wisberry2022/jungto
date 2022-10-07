@@ -1,6 +1,6 @@
 import './Common.css';
 import './Basic.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Sangha from './detail/Sangha/Sangha';
 import Intro from './detail/Intro/Intro';
 import College from './detail/college/College';
@@ -12,8 +12,7 @@ import Layout from './detail/Layout';
 function App() {
   return (
     <>
-      <BrowserRouter>
-        {/* <BrowserRouter> */}
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Total />} />
           <Route element={<Layout />}>
@@ -24,7 +23,7 @@ function App() {
             <Route path="/mm_practice/*" element={<Practice />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }

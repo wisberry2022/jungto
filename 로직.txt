@@ -7,13 +7,34 @@
 		2) 디스패치 실행(미들웨어 사용)하여 서버로 GET 요청
 		3) 서버에서 GET 요청 받아 DB에 있는 모든 Document 조회
 		4) 결과 Document 프론트단으로 전송
+		5) 결과 Document store에 전송
 
-	* 컴포넌트에서 곧바로 DB에 접근
+
+	* 컴포넌트에서 곧바로 DB에 접근(plan-a)
 		1) Board.js 컴포넌트 렌더링 시 useEffect 통해 axios.get으로 DB에 접근
 		2) 서버에서 GET 요청 받아 DB에 있는 모든 Document 조회
 		3) 결과 Document 프론트단으로 전송하여 useState 통해 컴포넌트 내 데이터로 전송
 		4) BoardTemplate 컴포넌트에 props로 전달
+	
+	* 컴포넌트에서 곧바로 DB에 접근(plan-b) (이걸로 로직 구성)
+		0) 가장 먼저 실행되야 하는 것 -> store에 있는 데이터 끌고오기
+		1) Board.js 컴포넌트 렌더링 시 useEffect 통해 axios.get으로 서버에 접근
+		2) 서버에서 GET 요청 받아 DB에 있는 모든 Document 조회
+		3) 결과 Document 프론트단으로 전송하여 디스패치 통해 리덕스 스토어에 저장
+		4) BoardTemplate 컴포넌트에 props로 전달
+
+Board.js 로직
+	1) Board 컴포넌트
+		-A. Store에 접근하여 게시글 데이터 받아오기(DOM 렌더링 이후) -> 데이터가 없으니 빈공간 출력
+		-B. useEffect를 통해 axios.get으로 DB에 접근(DOM 렌더링 이후 useEffect 실행 시) o
+		-C. 서버에서 GET 요청 받아 DB에 있는 모든 Document 조회(DOM 렌더링 이후 useEffect 실행 시) o
+		-D. 결과 Document 프론트단으로 전송하여 디스패치 통해 리덕스 스토어에 저장(DOM 렌더링 이후 useEffect 실행 시)
+		-Z. BoardTemplate에 게시글 데이터 Props로 전달
 		
+	2) BoardTemplate
+		-1. props로 받은 게시글 데이터 목록에 출력
+
+	
 5. 데이터 뿌려주기
 
 

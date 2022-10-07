@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
 
-const initialState = { id: 1, board: [] };
+const initialState = [];
 
 const postData = createAsyncThunk('reviewSlice/postData', (dataArr) => {
   console.log('thunk 실행!', dataArr);
@@ -28,6 +28,12 @@ const reviewSlice = createSlice({
         return acc;
       }, {}))
       state.id += 1;
+    },
+    UPDATE: (state, action) => {
+      // console.log(`update 리듀서로 들어온 action:`, action.payload);
+      state = [...action.payload.map((it, idx) => ({ ...it, id: idx + 1 }))];
+      // console.log(`update 리듀서로 처리한 state:`, state);
+      return state;
     }
   },
   extraReducers: (builder) => {
@@ -39,5 +45,5 @@ const reviewSlice = createSlice({
 })
 
 export default reviewSlice;
-export const { ADD } = reviewSlice.actions;
+export const { ADD, UPDATE } = reviewSlice.actions;
 export { postData }

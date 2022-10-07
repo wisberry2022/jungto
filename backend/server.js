@@ -1,13 +1,19 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const bodyParser = require('body-parser');
 const router = require('./Router/router');
 
 app.use(express.static(path.join(__dirname, '../build')));
 
-port = 5050;
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.listen(port, () => {
+app.post('/register', router);
+app.get('/mm_practice', router)
+
+port = 5050;
+app.listen(process.env.PORT || port, () => {
   console.log(`server listening on ${port}`)
 })
 

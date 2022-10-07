@@ -1,6 +1,7 @@
 import './Board.scss';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { UPDATE } from '../../../store/module/reviewSlice';
 import { useEffect } from 'react';
 import axios from 'axios';
 
@@ -56,25 +57,63 @@ const BoardTemplate = ({ postingData }) => {
 const Board = () => {
 
   // store에 접근하여 postingData에 전체 데이터를 가져옴
-  const examData = useSelector(state => state.review.board);
+  const postingData = useSelector(state => state.review);
   const dispatch = useDispatch();
-  const postingData = [];
-  // const postingData = [
-  //   { id: 1, title: '안녕하세요', author: '오수진', date: '2022-10-05' },
-  //   { id: 2, title: '안녕하세요', author: '오수진', date: '2022-10-05' },
-  //   { id: 3, title: '안녕하세요', author: '오수진', date: '2022-10-05' },
-  //   { id: 4, title: '안녕하세요', author: '오수진', date: '2022-10-05' },
-  // ];
 
   useEffect(() => {
     // DB에 직접 접근
-    axios.get('/mm')
-  }, [examData])
+    axios.get('/mm_practice')
+      .then((res) => (dispatch(UPDATE(res.data))));
+
+    // const exam = [
+    //   {
+    //     "_id": {
+    //       "$oid": "6340a5d5e6a290dfcba72877"
+    //     },
+    //     "title": "감사합니다!",
+    //     "author": "왕인서",
+    //     "email": "ground444@naver.com",
+    //     "password": "103030200",
+    //     "contents": "수행과 실천 2일차~\n넘 좋아요~ 여러분들도 하세요!",
+    //     "date": "2022-10-08",
+    //     "__v": 0
+    //   },
+    //   {
+    //     "_id": {
+    //       "$oid": "6340a5d5e6a290dfcba72877"
+    //     },
+    //     "title": "수고하셨습니다!",
+    //     "author": "김주은",
+    //     "email": "ground444@naver.com",
+    //     "password": "103030200",
+    //     "contents": "수행과 실천 2일차~\n넘 좋아요~ 여러분들도 하세요!",
+    //     "date": "2022-10-08",
+    //     "__v": 0
+    //   },
+    //   {
+    //     "_id": {
+    //       "$oid": "6340a5d5e6a290dfcba72877"
+    //     },
+    //     "title": "수행5일차",
+    //     "author": "오창석",
+    //     "email": "ground444@naver.com",
+    //     "password": "103030200",
+    //     "contents": "수행과 실천 2일차~\n넘 좋아요~ 여러분들도 하세요!",
+    //     "date": "2022-10-08",
+    //     "__v": 0
+    //   },
+    // ];
+
+    // dispatch(UPDATE(exam));
+
+  }, [dispatch])
+
+
 
   return (
     <section className="board">
       <div className="container">
-        {console.log(`boardJs 내부!:`, examData)}
+        {/* {console.log(`boardJs 내부!:`, examData)} */}
         <div className="semi_title">
           <h4>실천 기록장</h4>
           <p>
