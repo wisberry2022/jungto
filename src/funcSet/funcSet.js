@@ -1,3 +1,4 @@
+
 /**
  * 오늘 년,월,일을 yyyy-mm-dd 형태로 반환하는 함수
  **/
@@ -11,3 +12,16 @@ const getTodayForm = () => {
 }
 
 export { getTodayForm }
+
+/**
+ * 비밀번호 체크 함수
+ * @params userPwd => 사용자가 입력한 비밀번호
+ * @params realPwd => 실제 비밀번호
+ **/
+const checkPwd = (userPwd, realPwd) => {
+  console.log(userPwd, realPwd);
+  return userPwd === realPwd ? true : false;
+
+}
+
+export { checkPwd }

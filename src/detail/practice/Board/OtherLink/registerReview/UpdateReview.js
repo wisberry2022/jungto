@@ -1,13 +1,12 @@
+import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { postData, ADD } from '../../../../../store/module/reviewSlice';
 import './RegisterReview.scss';
-import { useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { getTodayForm } from '../../../../../funcSet/funcSet';
 
-
-const FormBox = () => {
-
+const FormBox = ({ postingData }) => {
   const dispatch = useDispatch();
 
   const titleRef = useRef();
@@ -17,8 +16,21 @@ const FormBox = () => {
   const bodyRef = useRef();
   const today = getTodayForm();
 
+  const inputSetting = useCallback(() => {
+    titleRef.current.value = postingData.title;
+    authorRef.current.value = postingData.author;
+    emailRef.current.value = postingData.email;
+    pwdRef.current.value = postingData.password;
+    bodyRef.current.value = postingData.contents;
+  }, [postingData])
+
+  useEffect(() => {
+    inputSetting();
+  }, [inputSetting])
+
   return (
     <div className="form_box">
+      {console.log(postingData)}
       <h4>게시글 등록하기</h4>
       <form className="review_box">
         <div className="title_set">
@@ -34,15 +46,17 @@ const FormBox = () => {
           <textarea placeholder="후기를 작성해주세요!" id="body" ref={bodyRef} required></textarea>
         </div>
         <button type="submit" className="btn">
-          <Link to="/mm_practice" onClick={() => (dispatch(postData([titleRef.current.value, authorRef.current.value, emailRef.current.value, pwdRef.current.value, bodyRef.current.value, today])))}>등록하기</Link>
-          {/* <Link to="/mm_practice" onClick={() => (dispatch(ADD([titleRef.current.value, authorRef.current.value, emailRef.current.value, pwdRef.current.value, bodyRef.current.value, today])))}>등록하기</Link> */}
+          <Link to="/mm_practice" onClick={() => (dispatch(postData([titleRef.current.value, authorRef.current.value, emailRef.current.value, pwdRef.current.value, bodyRef.current.value, today])))}>수정하기</Link>
         </button>
       </form>
     </div>
   )
 }
 
-const RegisterReview = () => {
+
+const UpdateReview = ({ postingData }) => {
+  const params = useParams();
+  const data = postingData[params.id];
   return (
     <section className="register">
       <div className="container">
@@ -50,10 +64,10 @@ const RegisterReview = () => {
           <h3>실천기록장 등록하기</h3>
           <p>당신의 수행 실천의 경험을 다른 수행자들에게 공유해보세요</p>
         </div>
-        <FormBox />
+        <FormBox postingData={data} />
       </div>
     </section>
   )
 }
 
-export default RegisterReview;
+export default UpdateReview;

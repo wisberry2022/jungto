@@ -17,6 +17,10 @@ const postData = createAsyncThunk('reviewSlice/postData', (dataArr) => {
   return data;
 })
 
+// const updateData = createAsyncThunk('reviewSlice/updateData', () => {
+
+// })
+
 const reviewSlice = createSlice({
   name: 'reviewSlice',
   initialState,
@@ -30,9 +34,7 @@ const reviewSlice = createSlice({
       state.id += 1;
     },
     UPDATE: (state, action) => {
-      // console.log(`update 리듀서로 들어온 action:`, action.payload);
       state = [...action.payload.map((it, idx) => ({ ...it, id: idx + 1 }))];
-      // console.log(`update 리듀서로 처리한 state:`, state);
       return state;
     }
   },
