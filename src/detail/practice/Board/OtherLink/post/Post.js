@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { checkPwd } from "../../../../../funcSet/funcSet";
+import { deleteData } from "../../../../../store/module/reviewSlice";
 import './Post.scss';
 
 const TitleSet = ({ data }) => {
@@ -44,7 +46,6 @@ const PostBody = ({ body }) => {
             {it} <br />
           </p>
         )
-
       })}
     </div>
   )
@@ -62,13 +63,14 @@ const CheckModal = ({ realPwd, setBool, type, id }) => {
   const pwdRef = useRef();
   const [updateDist, setUpdate] = useState();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const goPage = (type) => {
     if (type === 'UPDATE') {
       navigate(`/mm_practice/reviewUpdate/${id}`);
     } else if (type === 'DELETE') {
-      // navigate('/');
-      // 삭제 로직
+      dispatch(deleteData(realPwd))
+      navigate(`/mm_practice`);
     }
   }
 
@@ -77,7 +79,6 @@ const CheckModal = ({ realPwd, setBool, type, id }) => {
       <h4>비밀번호를 입력하세요</h4>
       <div className="check_pwd">
         <input type="password" ref={pwdRef} required />
-        {console.log(realPwd)}
         <button onClick={() => (checkPwd(pwdRef.current.value, realPwd) ? goPage(type) : setUpdate(false))}>확인</button>
       </div>
       <div className="close_box" onClick={() => (setBool(false))}>
@@ -95,7 +96,6 @@ const Post = ({ postingData }) => {
   const data = postingData[params.id - 1];
   return (
     <section className="post_view">
-      {console.log(data)}
       {postingData[params.id - 1]
         ?
         <div className="container">
@@ -106,7 +106,7 @@ const Post = ({ postingData }) => {
             <button to="#" className="btn" onClick={() => (setBool(true), setType('UPDATE'))}>수정하기</button>
             <button to="#" className="btn" onClick={() => (setBool(true), setType('DELETE'))}>삭제하기</button>
           </div>
-          {bool ? <CheckModal realPwd={data.password} setBool={setBool} type={type} id={params.id - 1} /> : null}
+          {bool ? <CheckModal realPwd={data.password} setBool={setBool} type={type} id={params.id} /> : null}
         </div> :
         <div>NONE</div>
       }

@@ -1,0 +1,79 @@
+@import '../../detail/commonCss/detailCommon.scss';
+
+.signin_section {
+  .container {
+    h3 {
+      @include title_deco(6.8%);
+      margin-bottom: 8rem;
+      text-align: center;
+
+      &::after {
+        left: 44.3%;
+      }
+    }
+
+    .total_box {
+      margin: 0 auto;
+      border: 0.1rem solid $mc;
+      padding: 5rem 1rem;
+      width: 50%;
+
+      h4 {
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .signin_box {
+        .inner_box {
+          display: flex;
+          flex-direction: column;
+          margin: 0 auto;
+          width: 55%;
+
+          .input_box {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+
+            input {
+              border: none;
+              border-top: 0.1rem solid #ddd;
+              border-left: 0.1rem solid #ddd;
+              border-right: 0.1rem solid #ddd;
+              padding: 1rem;
+              font-size: 1.5rem;
+
+              &:last-child {
+                border-bottom: 0.1rem solid #ddd;
+              }
+            }
+          }
+
+          .btn {
+            margin-bottom: 1.5rem;
+            border: none;
+            padding: 1rem 1.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+          }
+
+          .sub_link {
+            display: flex;
+            // gap: 1.5rem;
+            justify-content: center;
+
+            >li {
+              padding: 0 .75rem;
+              font-size: 1.3rem;
+
+              &:nth-child(-n+2) {
+                border-right: 0.1rem solid #ddd;
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+}

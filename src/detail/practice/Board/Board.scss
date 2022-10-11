@@ -25,7 +25,7 @@
       }
 
       table {
-        margin-bottom: 2.5rem;
+        margin-bottom: 5rem;
         border-top: 0.2rem solid #000;
         border-bottom: 0.2rem solid #000;
 
@@ -112,11 +112,37 @@
         }
       }
 
+      .page_index {
+        display: flex;
+        justify-content: center;
+
+        >li {
+          border-top: 0.1rem solid #ddd;
+          border-bottom: 0.1rem solid #ddd;
+          width: 5rem;
+          font-size: 1.8rem;
+          padding: 1rem;
+          text-align: center;
+          cursor: pointer;
+
+
+          &.prev,
+          &.next {
+            border: 0.1rem solid #ddd;
+            color: $mc;
+          }
+        }
+
+      }
+
       .btn {
         display: flex;
         justify-content: center;
         gap: 1rem;
         align-items: center;
+        position: absolute;
+        right: 0;
+        bottom: 0;
         border: 0.2rem solid $mc;
         border-radius: 3.5rem;
         padding: 1rem 1.5rem;

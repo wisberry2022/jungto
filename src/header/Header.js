@@ -6,7 +6,7 @@ const TopInfo = () => {
     <div className="top_info">
       <div className="list_box">
         <ul className="left_info">
-          <Link to="/login" className="box">회원가입</Link>
+          <Link to="/login" className="box">로그인</Link>
           <Link to="/sitemap" className="box">사이트맵</Link>
         </ul>
         <ul className="right_info">

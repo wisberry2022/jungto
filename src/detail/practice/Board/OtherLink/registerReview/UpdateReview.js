@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { postData, ADD } from '../../../../../store/module/reviewSlice';
+import { updateData } from '../../../../../store/module/reviewSlice';
 import './RegisterReview.scss';
 import { useCallback, useEffect, useRef } from 'react';
 import { getTodayForm } from '../../../../../funcSet/funcSet';
@@ -46,17 +46,16 @@ const FormBox = ({ postingData }) => {
           <textarea placeholder="후기를 작성해주세요!" id="body" ref={bodyRef} required></textarea>
         </div>
         <button type="submit" className="btn">
-          <Link to="/mm_practice" onClick={() => (dispatch(postData([titleRef.current.value, authorRef.current.value, emailRef.current.value, pwdRef.current.value, bodyRef.current.value, today])))}>수정하기</Link>
+          <Link to="/mm_practice" onClick={() => (dispatch(updateData([postingData._id, titleRef.current.value, authorRef.current.value, emailRef.current.value, pwdRef.current.value, bodyRef.current.value, today])))}>수정하기</Link>
         </button>
       </form>
     </div>
   )
 }
 
-
 const UpdateReview = ({ postingData }) => {
   const params = useParams();
-  const data = postingData[params.id];
+  const data = postingData[params.id - 1];
   return (
     <section className="register">
       <div className="container">
@@ -64,7 +63,7 @@ const UpdateReview = ({ postingData }) => {
           <h3>실천기록장 등록하기</h3>
           <p>당신의 수행 실천의 경험을 다른 수행자들에게 공유해보세요</p>
         </div>
-        <FormBox postingData={data} />
+        {postingData.length > 0 ? <FormBox postingData={data} /> : <div>NONE</div>}
       </div>
     </section>
   )
