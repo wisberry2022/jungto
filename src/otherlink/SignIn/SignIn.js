@@ -3,9 +3,22 @@ import SignUp from './subpage/SignUp';
 import FindPwd from './subpage/FindPwd';
 import FindId from './subpage/FindId';
 import './SignIn.scss'
+import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { LOGIN } from '../../store/module/loginSlice';
 
 const SignIn = () => {
   const location = useLocation();
+  const dispatch = useDispatch();
+
+  const idRef = useRef();
+  const pwdRef = useRef();
+
+  const loginHandling = (e) => {
+    e.preventDefault();
+    dispatch(LOGIN({ userId: idRef.current.value, password: pwdRef.current.value }))
+  }
+
   return (
     <section className="signin_section">
       {location.pathname === '/login'
@@ -16,11 +29,11 @@ const SignIn = () => {
             <h4>
               <img src="./detail_logo.png" alt="jungto" />
             </h4>
-            <form className="signin_box">
+            <form className="signin_box" onSubmit={(e) => (loginHandling(e))}>
               <div className="inner_box">
                 <div className="input_box">
-                  <input type="text" name="id" id="id" placeholder="아이디" required />
-                  <input type="password" name="pwd" id="pwd" placeholder="비밀번호" required />
+                  <input type="text" name="id" id="id" ref={idRef} placeholder="아이디" required />
+                  <input type="password" name="pwd" id="pwd" ref={pwdRef} placeholder="비밀번호" required />
                 </div>
                 <button type="submit" className="btn">
                   로그인하기
@@ -40,7 +53,6 @@ const SignIn = () => {
           <Route path="SignUp" element={<SignUp />} />
         </Routes>
       }
-
     </section >
   )
 }

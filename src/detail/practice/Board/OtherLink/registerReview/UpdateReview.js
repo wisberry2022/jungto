@@ -28,11 +28,14 @@ const FormBox = ({ postingData }) => {
     inputSetting();
   }, [inputSetting])
 
+  const registerHandling = (e) => {
+    e.preventDefault();
+  }
+
   return (
     <div className="form_box">
-      {console.log(postingData)}
       <h4>게시글 등록하기</h4>
-      <form className="review_box">
+      <form className="review_box" onSubmit={(e) => (registerHandling(e))}>
         <div className="title_set">
           <input type="text" name="review_title" placeholder="제목을 입력하세요" id="title" ref={titleRef} required />
           <input type="text" name="review_author" placeholder="이름을 입력하세요" id="author" ref={authorRef} required />
