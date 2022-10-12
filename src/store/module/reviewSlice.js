@@ -72,6 +72,6 @@ const reviewSlice = createSlice({
   }
 })
 
-export default reviewSlice;
+export default reviewSlice.reducer;
 export const { ADD, UPDATE } = reviewSlice.actions;
 export { postData, updateData, deleteData }

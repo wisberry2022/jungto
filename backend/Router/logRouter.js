@@ -34,6 +34,7 @@ router.post('/assignMember', async (req, res) => {
 router.post('/loginCheck', (req, res) => {
   let userId = { userId: req.body.userId }
   let password = { password: crypto.createHash('sha512').update(req.body.password).digest('base64') }
+  console.log(userId, password);
   userModel.findOne(userId)
     .then((result) => {
       // 아이디 검사
@@ -75,7 +76,7 @@ router.post('/loginCheck', (req, res) => {
 })
 
 // 토큰 검증 라우팅
-router.post('/', (req, res) => {
+router.post('/verify', (req, res) => {
   const token = req.headers['authorization'];
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
     if (err) {

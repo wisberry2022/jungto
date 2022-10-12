@@ -7,23 +7,22 @@ router.get('/mm_practice', (req, res) => {
     .then((result) => res.send(result));
 })
 
-router.post('/register', async (req, res) => {
+router.post('/register', (req, res) => {
   console.log(`req.body:`, req.body);
-  await boardModel.insertMany(req.body);
+  boardModel.insertMany(req.body);
   res.send('OK');
 })
 
-router.put('/update', async (req, res) => {
+router.put('/update', (req, res) => {
   console.log('update 요청 받음:', req.body);
   let dataId = { '_id': req.body._id };
-  await boardModel.updateOne(dataId, req.body)
+  boardModel.updateOne(dataId, req.body)
     .then((result) => (res.send('OK!')));
 })
 
-router.delete('/delete', async (req, res) => {
+router.delete('/delete', (req, res) => {
   let pwd = { password: req.body.pwd };
-  console.log('삭제!');
-  await boardModel.deleteOne(pwd).then((result) => (res.send('OK')))
+  boardModel.deleteOne(pwd).then((result) => (res.send('OK')))
 })
 
 module.exports = router;

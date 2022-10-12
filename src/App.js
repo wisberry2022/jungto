@@ -14,8 +14,8 @@ function App() {
     <>
       <HashRouter>
         <Routes>
-          <Route path="/*" element={<Total />} />
           <Route element={<Layout />}>
+            <Route path="/*" element={<Total />} />
             <Route path="/sangha" element={<Sangha />} />
             <Route path="/mm_intro" element={<Intro />} />
             <Route path="/mm_college" element={<College />} />

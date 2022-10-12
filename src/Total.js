@@ -1,8 +1,5 @@
-// import { useState } from 'react';
-import Header from './header/Header';
 import MainVisual from './header/MainVisual';
 import Main from './main/Main';
-import Footer from './footer/Footer';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import SignIn from './otherlink/SignIn/SignIn';
 
@@ -11,7 +8,6 @@ const Total = () => {
 
   return (
     <>
-      <Header />
       {location.pathname === "/" ?
         <>
           <MainVisual />
@@ -20,7 +16,6 @@ const Total = () => {
         <Routes>
           <Route path="login/*" element={<SignIn />} />
         </Routes>}
-      <Footer />
     </>
   )
 }

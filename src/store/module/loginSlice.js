@@ -1,29 +1,49 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = { logState: false };
 
-const LOGIN = createAsyncThunk('loginSlice/LOGIN', async (dataObj) => {
-  console.log('LOGIN REDUCER:', dataObj);
-  await axios.post('/loginCheck', dataObj)
-    .then((res) => (console.log(res)));
-});
+const verifyData = createAsyncThunk('loginSlice/VERIFY', async (userState) => {
+  let result = await axios.post('/verify', {}, {
+    headers: {
+      Authorization: userState,
+    }
+  })
+  if (result.data.ACCESS_RESULT === 'PERMITTED') {
+    return true;
+  } else {
+    return false;
+  }
+
+})
 
 const loginSlice = createSlice({
   name: 'loginSlice',
   initialState,
   reducers: {
-    GET: (state, action) => {
-      return state;
+    VERIFY: (state, action) => {
+      state.logState = true;
+    },
+    CLEAR: (state, action) => {
+      state.logState = false;
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(LOGIN.fulfilled, (state, action) => {
+    builder.addCase(verifyData.pending, (state, action) => {
+      console.log('pending:', action.payload);
+      return state;
+    })
+    builder.addCase(verifyData.fulfilled, (state, action) => {
+      console.log('fulfilled:', action.payload);
+      state.logState = action.payload;
+    })
+    builder.addCase(verifyData.rejected, (state, action) => {
+      console.log('rejected:', action.payload);
       return state;
     })
   }
-});
+})
 
-export default loginSlice;
-export { LOGIN };
+export const { VERIFY, CLEAR } = loginSlice.actions;
+export { verifyData };
+export default loginSlice.reducer;

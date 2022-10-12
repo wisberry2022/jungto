@@ -4,7 +4,8 @@ import FindPwd from './subpage/FindPwd';
 import FindId from './subpage/FindId';
 import './SignIn.scss'
 import { useRef, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { verifyData } from '../../store/module/loginSlice';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 const SignIn = () => {
@@ -13,6 +14,7 @@ const SignIn = () => {
   const navigate = useNavigate();
   const idRef = useRef();
   const pwdRef = useRef();
+  const dispatch = useDispatch();
 
   // 로그인 정보 입력 후 서버 전송
   const loginHandling = async (e) => {
@@ -24,6 +26,7 @@ const SignIn = () => {
         password: pwdRef.current.value,
       }).catch((error) => { errorData = error.response.data })
       localStorage.setItem('userState', result.data.ACCESS_TOKEN);
+      dispatch(verifyData(result.data.ACCESS_TOKEN))
       navigate('/');
     } catch (error) {
       setBool(false);

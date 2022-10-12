@@ -265,4 +265,4 @@ const historySlice = createSlice({
   }
 })
 
-export default historySlice;
+export default historySlice.reducer;

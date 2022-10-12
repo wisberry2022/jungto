@@ -1,29 +1,22 @@
 import './Header.scss'
-import { Link, NavLink, useLocation } from 'react-router-dom';
-import { useEffect, useMemo, useState } from 'react';
-import axios from 'axios';
-// import { useSelector } from 'react-redux';
+import { Link, NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { verifyData } from '../store/module/loginSlice';
 
 const TopInfo = () => {
-  const [auth, setAuth] = useState(false);
-  const userState = localStorage.getItem('userState');
+  const logState = useSelector(state => state.login.logState);
+  const dispatch = useDispatch();
+  const [auth, setAuth] = useState(logState);
 
   useEffect(() => {
-    axios.post('/', {}, {
-      headers: {
-        Authorization: userState,
-      }
-    }).then((result) => {
-      if (result.data.ACCESS_RESULT === 'PERMITTED') {
-        setAuth(true);
-      } else {
-        setAuth(false);
-      }
-    })
-  }, [userState])
+    dispatch(verifyData(localStorage.userState))
+    setAuth(logState)
+  }, [logState, dispatch])
 
   const logOut = () => {
     localStorage.removeItem('userState');
+    dispatch(verifyData(localStorage.userState));
   }
 
   return (
