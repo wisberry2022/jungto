@@ -9,7 +9,6 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { UPDATE } from "../../store/module/reviewSlice";
 
-
 const Practice = () => {
   const postingData = useSelector(state => state.review);
   const dispatch = useDispatch();

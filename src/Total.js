@@ -8,6 +8,7 @@ import SignIn from './otherlink/SignIn/SignIn';
 
 const Total = () => {
   const location = useLocation();
+
   return (
     <>
       <Header />

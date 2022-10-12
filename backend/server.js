@@ -19,6 +19,7 @@ app.delete('/delete', router);
 // 로그인 관련 라우팅
 app.post('/assignMember', logRouter);
 app.post('/loginCheck', logRouter);
+app.post('/', logRouter);
 
 
 port = 5050;

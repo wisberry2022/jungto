@@ -1,12 +1,36 @@
 import './Header.scss'
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import axios from 'axios';
+// import { useSelector } from 'react-redux';
 
 const TopInfo = () => {
+  const [auth, setAuth] = useState(false);
+  const userState = localStorage.getItem('userState');
+
+  useEffect(() => {
+    axios.post('/', {}, {
+      headers: {
+        Authorization: userState,
+      }
+    }).then((result) => {
+      if (result.data.ACCESS_RESULT === 'PERMITTED') {
+        setAuth(true);
+      } else {
+        setAuth(false);
+      }
+    })
+  }, [userState])
+
+  const logOut = () => {
+    localStorage.removeItem('userState');
+  }
+
   return (
     <div className="top_info">
       <div className="list_box">
         <ul className="left_info">
-          <Link to="/login" className="box">로그인</Link>
+          {auth ? <Link to="#" className="box" onClick={() => (logOut())}>로그아웃</Link> : <Link to="/login" className="box">로그인</Link>}
           <Link to="/sitemap" className="box">사이트맵</Link>
         </ul>
         <ul className="right_info">

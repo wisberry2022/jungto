@@ -1,7 +1,9 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 
+
 mongoose.connect(
-  'mongodb+srv://wisberry2022:chvrches409@cluster0.8xydiec.mongodb.net/Jungto?retryWrites=true&w=majority', {
+  `mongodb+srv://wisberry2022:chvrches409@cluster0.8xydiec.mongodb.net/Jungto?retryWrites=true&w=majority`, {
   autoIndex: true, keepAlive: true, keepAliveInitialDelay: 30000,
 }
 ).then(() => (console.log('mongodb board connect!'))).catch((err) => { console.log(err) })

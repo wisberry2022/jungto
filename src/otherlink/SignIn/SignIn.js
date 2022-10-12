@@ -1,22 +1,33 @@
-import { Link, Route, Routes, useLocation } from 'react-router-dom';
+import { Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import SignUp from './subpage/SignUp';
 import FindPwd from './subpage/FindPwd';
 import FindId from './subpage/FindId';
 import './SignIn.scss'
-import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { LOGIN } from '../../store/module/loginSlice';
+import { useRef, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 
 const SignIn = () => {
+  const [stateBool, setBool] = useState(true);
   const location = useLocation();
-  const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const idRef = useRef();
   const pwdRef = useRef();
 
-  const loginHandling = (e) => {
+  // 로그인 정보 입력 후 서버 전송
+  const loginHandling = async (e) => {
     e.preventDefault();
-    dispatch(LOGIN({ userId: idRef.current.value, password: pwdRef.current.value }))
+    let errorData;
+    try {
+      let result = await axios.post('/loginCheck', {
+        userId: idRef.current.value,
+        password: pwdRef.current.value,
+      }).catch((error) => { errorData = error.response.data })
+      localStorage.setItem('userState', result.data.ACCESS_TOKEN);
+      navigate('/');
+    } catch (error) {
+      setBool(false);
+    }
   }
 
   return (
@@ -35,6 +46,7 @@ const SignIn = () => {
                   <input type="text" name="id" id="id" ref={idRef} placeholder="아이디" required />
                   <input type="password" name="pwd" id="pwd" ref={pwdRef} placeholder="비밀번호" required />
                 </div>
+                {stateBool ? null : <strong>아이디, 비밀번호가 잘못되었습니다</strong>}
                 <button type="submit" className="btn">
                   로그인하기
                 </button>
