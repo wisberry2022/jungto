@@ -1,6 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import historySlice from "./module/history";
-// import reviewSlice from "./module/reviewSlice";
 import storage from "redux-persist/lib/storage";
 import { combineReducers } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
@@ -8,12 +6,13 @@ import { persistReducer } from "redux-persist";
 import reviewReducer from './module/reviewSlice';
 import historyReducer from './module/history';
 import loginReducer from './module/loginSlice';
-
+import trainReducer from './module/trainSlice';
 
 const reducers = combineReducers({
   review: reviewReducer,
   history: historyReducer,
   login: loginReducer,
+  train: trainReducer,
 });
 
 const persistConfig = {
@@ -24,14 +23,6 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
-
-
-// const store = configureStore({
-//   reducer: {
-//     history: historySlice.reducer,
-//     review: reviewSlice.reducer,
-//   }
-// });
 
 const store = configureStore({
   reducer: persistedReducer,

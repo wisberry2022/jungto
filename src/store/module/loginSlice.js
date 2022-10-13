@@ -14,7 +14,6 @@ const verifyData = createAsyncThunk('loginSlice/VERIFY', async (userState) => {
   } else {
     return false;
   }
-
 })
 
 const loginSlice = createSlice({
