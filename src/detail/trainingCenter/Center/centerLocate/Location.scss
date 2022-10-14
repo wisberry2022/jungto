@@ -1,0 +1,66 @@
+@import '../../../commonCss/detailCommon.scss';
+
+.location {
+  .container {
+    .title_box {
+      margin-bottom: 7rem;
+
+      h3 {
+        @include title_deco(5%);
+      }
+    }
+
+    h4 {
+      @include semiTitle;
+      margin-bottom: 3rem;
+    }
+
+    .locate_box {
+      display: flex;
+      gap: 10rem;
+
+      >div {
+        flex: 1;
+
+        &.left {
+          figure {
+            height: 30rem;
+
+            .marker {
+              text-align: center !important;
+            }
+          }
+        }
+
+        &.right {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          .locate_info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            >li {
+              display: flex;
+              gap: 2.5rem;
+              list-style-type: circle;
+
+              strong {
+                display: block;
+                width: 10rem;
+                font-size: 1.8rem;
+                font-weight: 500;
+              }
+
+              span {
+                font-size: 1.5rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
