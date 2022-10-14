@@ -3,7 +3,7 @@ import './Location.scss';
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Map = ({ address, place }) => {
   useEffect(() => {
@@ -33,7 +33,6 @@ const Map = ({ address, place }) => {
       }
     })
 
-    console.log('loading kakakomap');
   }, [address, place])
 
   return (
@@ -66,13 +65,22 @@ const Location = () => {
   const data = useSelector(state => state.train);
   const params = useParams();
   const locationData = data[params.id - 1];
+  const idList = data.filter(it => { return it.locate_flag }).map(its => its.id);
   return (
     <section className="location">
       <div className="container">
-        {console.log(locationData)}
         <div className="title_box">
           <h3>오시는 길</h3>
         </div>
+        <ul className="location_nav">
+          {idList.map((it, idx) => {
+            return (
+              <li key={idx}>
+                <NavLink to={`../locate/${it}`}>{data[idx].title}</NavLink>
+              </li>
+            )
+          })}
+        </ul>
         <h4>{locationData.title}</h4>
         <LocateBox locateInfo={locationData.locate_info} title={locationData.title} />
       </div>
