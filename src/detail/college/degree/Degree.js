@@ -54,7 +54,7 @@ const Degree = () => {
           <h4>학사안내 및 입학신청</h4>
         </div>
         <DegreeTable />
-        <Link to="#" className="btn">입학신청하기</Link>
+        <Link to="entry" className="btn">입학신청하기</Link>
       </div>
     </section>
   )

@@ -15,6 +15,7 @@ const SignIn = () => {
   const idRef = useRef();
   const pwdRef = useRef();
   const dispatch = useDispatch();
+  // console.log(`이전 주소:`, location.state.locate);
 
   // 로그인 정보 입력 후 서버 전송
   const loginHandling = async (e) => {
@@ -27,7 +28,8 @@ const SignIn = () => {
       }).catch((error) => { errorData = error.response.data })
       localStorage.setItem('userState', result.data.ACCESS_TOKEN);
       dispatch(verifyData(result.data.ACCESS_TOKEN))
-      navigate('/');
+      // navigate('/');
+      navigate(location.state.locate);
     } catch (error) {
       setBool(false);
     }

@@ -25,12 +25,14 @@ const createJWT = (userId, eMail) => {
   return token;
 }
 
+// 회원가입 라우팅
 router.post('/assignMember', async (req, res) => {
   req.body.password = crypto.createHash('sha512').update(req.body.password).digest('base64');
   await userModel.insertMany(req.body);
   res.send('OK')
 })
 
+// 로그인 라우팅
 router.post('/loginCheck', (req, res) => {
   let userId = { userId: req.body.userId }
   let password = { password: crypto.createHash('sha512').update(req.body.password).digest('base64') }

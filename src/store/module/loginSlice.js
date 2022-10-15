@@ -3,6 +3,7 @@ import axios from "axios";
 
 const initialState = { logState: false };
 
+// 배포용
 const verifyData = createAsyncThunk('loginSlice/VERIFY', async (userState) => {
   let result = await axios.post('/verify', {}, {
     headers: {
@@ -15,6 +16,25 @@ const verifyData = createAsyncThunk('loginSlice/VERIFY', async (userState) => {
     return false;
   }
 })
+
+//localhost 확인용
+// const verifyData = createAsyncThunk('loginSlice/VERIFY', async (userState) => {
+//   try {
+//     let result = await axios.post('/verify', {}, {
+//       headers: {
+//         Authorization: userState,
+//       }
+//     })
+//     if (result.data.ACCESS_RESULT === 'PERMITTED') {
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   }
+//   catch {
+//     return true;
+//   }
+// })
 
 const loginSlice = createSlice({
   name: 'loginSlice',
@@ -38,6 +58,9 @@ const loginSlice = createSlice({
     })
     builder.addCase(verifyData.rejected, (state, action) => {
       console.log('rejected:', action.payload);
+      // locahost:3000 확인 용
+      // state.logState = action.payload;
+      // 배포용 코드
       return state;
     })
   }

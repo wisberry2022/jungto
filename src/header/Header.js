@@ -1,17 +1,16 @@
 import './Header.scss'
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { verifyData } from '../store/module/loginSlice';
 
 const TopInfo = () => {
   const logState = useSelector(state => state.login.logState);
+  const location = useLocation();
   const dispatch = useDispatch();
-  const [auth, setAuth] = useState(logState);
 
   useEffect(() => {
     dispatch(verifyData(localStorage.userState))
-    setAuth(logState)
   }, [logState, dispatch])
 
   const logOut = () => {
@@ -23,11 +22,7 @@ const TopInfo = () => {
     <div className="top_info">
       <div className="list_box">
         <ul className="left_info">
-          {auth ? <Link to="#" className="box" onClick={() => (logOut())}>로그아웃</Link> : <Link to="/login" className="box">로그인</Link>}
-          <Link to="/sitemap" className="box">사이트맵</Link>
-        </ul>
-        <ul className="right_info">
-          <Link to="/eng" className="box">ENG</Link>
+          {logState ? <Link to="#" className="box" onClick={() => (logOut())}>로그아웃</Link> : <Link to="/login" className="box" state={{ locate: location.pathname }}>로그인</Link>}
           <Link to="/" className="box">HOME</Link>
         </ul>
       </div>
@@ -36,7 +31,7 @@ const TopInfo = () => {
 }
 
 const GNB = ({ menu }) => {
-
+  const logState = useSelector(state => state.login.logState);
   return (
     <nav className="gnb">
       <div className="top_menu">
@@ -66,9 +61,21 @@ const GNB = ({ menu }) => {
 
         </ul>
         <div className="side_menu">
-          <li><i className="xi-search"></i></li>
-          <li><i className="xi-message-o"></i></li>
-          <li><i className="xi-bars"></i></li>
+          <li>
+            <Link to="">
+              <i className="xi-search"></i>
+            </Link>
+          </li>
+          <li>
+            <Link to="">
+              <i className="xi-message-o"></i>
+            </Link>
+          </li>
+          <li>
+            <Link to={logState ? "myPage" : "/login"} state={logState ? { locate: 'myPage' } : { locate: '../myPage' }}>
+              <i className="xi-user-o"></i>
+            </Link>
+          </li>
         </div>
       </div>
     </nav>

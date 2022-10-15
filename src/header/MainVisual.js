@@ -2,11 +2,14 @@ import './MainVisual.scss'
 import "slick-carousel/slick/slick.css";
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
+import { useSelector } from 'react-redux';
 
 
 const SubInfo = () => {
+  const logState = useSelector(state => state.login.logState);
   return (
     <ul className="sub_info">
+      {console.log('MainVisual:', logState)}
       <li className="college">
         <strong>
           정토불교대학
@@ -14,7 +17,8 @@ const SubInfo = () => {
         <p>
           삶을 바꾸는 공부
         </p>
-        <Link to="/" className="btn">입학신청</Link>
+        {/* <Link to="/mm_college/entry" className="btn">입학신청</Link> */}
+        <Link to={logState ? "/mm_college/entry" : "/login"} state={logState ? { locate: '/mm_college/entry' } : { locate: '../mm_college/entry' }} className="btn">입학신청</Link>
         <figure className="bg_set icon01"></figure>
       </li>
       <li className="jts">
