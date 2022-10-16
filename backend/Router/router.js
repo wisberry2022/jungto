@@ -8,21 +8,20 @@ router.get('/mm_practice', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
-  console.log(`req.body:`, req.body);
   boardModel.insertMany(req.body);
   res.send('OK');
 })
 
 router.put('/update', (req, res) => {
-  console.log('update 요청 받음:', req.body);
+  // console.log('update 요청 받음:', req.body);
   let dataId = { '_id': req.body._id };
   boardModel.updateOne(dataId, req.body)
     .then((result) => (res.send('OK!')));
 })
 
 router.delete('/delete', (req, res) => {
-  let pwd = { password: req.body.pwd };
-  boardModel.deleteOne(pwd).then((result) => (res.send('OK')))
+  let data = { '_id': req.body._id, 'password': req.body.pwd };
+  boardModel.deleteOne(data).then((result) => (res.send('OK!')))
 })
 
 module.exports = router;

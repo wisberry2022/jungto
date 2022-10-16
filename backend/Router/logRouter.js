@@ -3,7 +3,9 @@ const router = express.Router();
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
-const userModel = require('../DB/user');
+const user = require('../DB/user');
+
+const { userModel } = user();
 
 dotenv.config();
 

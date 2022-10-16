@@ -18,8 +18,7 @@ const collegeSchema = new mongoose.Schema({
 })
 
 const collegeModel = mongoose.model('College', collegeSchema, "College");
-
-module.exports = collegeModel;
+// module.exports = collegeModel;
 
 // 회원정보 콜렉션
 const userSchema = new mongoose.Schema({
@@ -29,10 +28,17 @@ const userSchema = new mongoose.Schema({
   address: { type: String },
   phone: { type: String },
   assignDate: { type: String, required: true },
-  college: collegeSchema,
+  college: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'College',
+  },
 })
 
 const userModel = mongoose.model('UserSet', userSchema, "UserSet");
 
-
-module.exports = userModel;
+module.exports = function () {
+  return ({
+    collegeModel,
+    userModel
+  })
+}

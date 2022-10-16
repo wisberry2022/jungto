@@ -31,14 +31,14 @@ const updateData = createAsyncThunk('reviewSlice/updateData', async (dataArr) =>
   return data;
 })
 
-const deleteData = createAsyncThunk('reviewSlice/deleteData', async (userPwd) => {
-  console.log(`deleteData 내부 데이터:`, userPwd);
+const deleteData = createAsyncThunk('reviewSlice/deleteData', async (deleteInfo) => {
+  // console.log(`deleteData 내부 데이터:`, userPwd);
   let data = await axios.delete('/delete', {
     data: {
-      pwd: userPwd,
+      _id: deleteInfo[0],
+      pwd: deleteInfo[1],
     }
   })
-  console.log(`deleteData 보기:`, data);
   return data;
 })
 

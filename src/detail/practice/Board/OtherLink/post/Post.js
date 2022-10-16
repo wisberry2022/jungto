@@ -59,7 +59,7 @@ const DenyModal = () => {
   )
 }
 
-const CheckModal = ({ realPwd, setBool, type, id }) => {
+const CheckModal = ({ realPwd, setBool, type, id, data }) => {
   const pwdRef = useRef();
   const [updateDist, setUpdate] = useState();
   const navigate = useNavigate();
@@ -69,13 +69,14 @@ const CheckModal = ({ realPwd, setBool, type, id }) => {
     if (type === 'UPDATE') {
       navigate(`/mm_practice/reviewUpdate/${id}`);
     } else if (type === 'DELETE') {
-      dispatch(deleteData(realPwd))
+      dispatch(deleteData([data._id, realPwd]))
       navigate(`/mm_practice`);
     }
   }
 
   return (
     <div className="checkbox">
+      {console.log('CheckModal 내부 data:', data)}
       <h4>비밀번호를 입력하세요</h4>
       <div className="check_pwd">
         <input type="password" ref={pwdRef} required />
@@ -96,6 +97,7 @@ const Post = ({ postingData }) => {
   const data = postingData[params.id - 1];
   return (
     <section className="post_view">
+      {console.log('지금 선택한 데이터:', data)}
       {postingData[params.id - 1]
         ?
         <div className="container">
@@ -106,7 +108,7 @@ const Post = ({ postingData }) => {
             <button to="#" className="btn" onClick={() => (setBool(true), setType('UPDATE'))}>수정하기</button>
             <button to="#" className="btn" onClick={() => (setBool(true), setType('DELETE'))}>삭제하기</button>
           </div>
-          {bool ? <CheckModal realPwd={data.password} setBool={setBool} type={type} id={params.id} /> : null}
+          {bool ? <CheckModal realPwd={data.password} setBool={setBool} type={type} id={params.id} data={data} /> : null}
         </div> :
         <div>NONE</div>
       }

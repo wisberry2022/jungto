@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
-const userModel = require('../DB/user');
+const user = require('../DB/user');
+
+const { userModel } = user();
 
 dotenv.config();
 
@@ -11,10 +13,8 @@ router.post('/getData', (req, res) => {
   let userId;
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
     if (err) {
-      // console.log(err);
       res.status(400).send();
     } else {
-      // console.log(decoded);
       userId = decoded.userId;
       userModel.findOne({ userId: userId })
         .then((result) => {

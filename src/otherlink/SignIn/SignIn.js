@@ -28,9 +28,18 @@ const SignIn = () => {
       }).catch((error) => { errorData = error.response.data })
       localStorage.setItem('userState', result.data.ACCESS_TOKEN);
       dispatch(verifyData(result.data.ACCESS_TOKEN))
-      // navigate('/');
-      navigate(location.state.locate);
+      // 이전 URL에서 전달하였던 state로 가게 하는 코드
+      // 만일 전달받은 state 없을 경우 루트로 이동
+      console.log('에러 이전', location);
+      if (location.state !== null) {
+        console.log(`null 아님`, location)
+        navigate(location.state.locate);
+      } else {
+        console.log(`null임`, location)
+        navigate('/');
+      }
     } catch (error) {
+      console.log(error)
       setBool(false);
     }
   }

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { GET } from '../../../store/applicateSlice';
+import { getTodayForm } from '../../../funcSet/funcSet';
 import './Entry.scss';
 
 const InputForm = ({ data, defaultValue }) => {
@@ -39,12 +40,13 @@ const InputForm = ({ data, defaultValue }) => {
   )
 }
 
-const ErrorModal = ({ setError }) => {
+const ErrorModal = ({ setError, message }) => {
   return (
     <div className="error_modal">
       <p>
-        네트워크 에러입니다 관리자에게 문의해주세요! <br />
-        02-855-8341
+        에러입니다! 관리자에게 문의해주세요! <br />
+        02-855-8341<br />
+        <strong>{message}</strong>
       </p>
       <button onClick={() => (setError(false))}>확인</button>
     </div>
@@ -55,6 +57,7 @@ const Application = () => {
   const storeData = useSelector(state => state.application);
   const navigate = useNavigate();
   const [error, setError] = useState(false);
+  const [message, setMessage] = useState('');
   const [info, setInfo] = useState({});
 
   const logState = useSelector(state => state.login.logState);
@@ -95,8 +98,19 @@ const Application = () => {
         address: storeData.address,
         phone: storeData.phone,
         desiredDate: storeData.date,
+        assignDate: getTodayForm(),
       })
-      navigate('/mm_college')
+        .then((res) => {
+          console.log(`first`, res);
+          if (res.data.RESULT === 'SUCCESS') {
+            console.log(`success`, res.data.RESULT)
+            navigate('/mm_college')
+          } else if (res.data.RESULT === 'ALREADY_ASSIGN') {
+            console.log(`failed`, res.data.RESULT)
+            setError(true);
+            setMessage('이미 입학신청을 하셨습니다!');
+          }
+        })
     } catch (error) {
       console.log(error);
       setError(true);
@@ -124,8 +138,9 @@ const Application = () => {
           </tbody>
         </table>
         <button type="submit" className="btn">신청하기</button>
+        <strong className="warning">신청정보수정 및 취소는 마이페이지에서 할 수 있습니다</strong>
       </form>
-      {error ? <ErrorModal setError={setError} /> : null}
+      {error ? <ErrorModal setError={setError} message={message} /> : null}
     </div>
   )
 }
