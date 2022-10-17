@@ -6,6 +6,16 @@ mongoose.connect(
 }
 ).then(() => (console.log('mongodb user-set connect!'))).catch((err) => { console.log(err) })
 
+// 회원정보 콜렉션
+const userSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
+  password: { type: String, required: true },
+  email: { type: String, required: true },
+  address: { type: String },
+  phone: { type: String },
+  assignDate: { type: String, required: true },
+})
+
 // 정토불교대학 신청정보 콜렉션
 const collegeSchema = new mongoose.Schema({
   userId: { type: String, required: true },
@@ -17,24 +27,9 @@ const collegeSchema = new mongoose.Schema({
   assignDate: { type: String, required: true },
 })
 
-const collegeModel = mongoose.model('College', collegeSchema, "College");
-// module.exports = collegeModel;
-
-// 회원정보 콜렉션
-const userSchema = new mongoose.Schema({
-  userId: { type: String, required: true },
-  password: { type: String, required: true },
-  email: { type: String, required: true },
-  address: { type: String },
-  phone: { type: String },
-  assignDate: { type: String, required: true },
-  college: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'College',
-  },
-})
 
 const userModel = mongoose.model('UserSet', userSchema, "UserSet");
+const collegeModel = mongoose.model('College', collegeSchema, "College");
 
 module.exports = function () {
   return ({

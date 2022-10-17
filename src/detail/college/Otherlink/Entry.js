@@ -101,18 +101,14 @@ const Application = () => {
         assignDate: getTodayForm(),
       })
         .then((res) => {
-          console.log(`first`, res);
           if (res.data.RESULT === 'SUCCESS') {
-            console.log(`success`, res.data.RESULT)
             navigate('/mm_college')
           } else if (res.data.RESULT === 'ALREADY_ASSIGN') {
-            console.log(`failed`, res.data.RESULT)
             setError(true);
             setMessage('이미 입학신청을 하셨습니다!');
           }
         })
     } catch (error) {
-      console.log(error);
       setError(true);
     }
   }

@@ -6,6 +6,7 @@ const user = require('../DB/user');
 
 const { collegeModel, userModel } = user();
 
+
 router.post('/collegeEntry', (req, res) => {
   // 신청 내역 DB 저장 로직
   let duplicated = { 'userId': req.body.userId };
@@ -14,19 +15,15 @@ router.post('/collegeEntry', (req, res) => {
     .then((result) => {
       if (result === null) {
         collegeModel.insertMany(req.body)
-          .then((result) => (
-            userModel.findOne(duplicated)
-              .then((user) => (console.log(`usermodel`, user))),
+          .then(() => (
             res.send({
               'RESULT': 'SUCCESS',
             })
           ))
       } else {
-        userModel.findOne(duplicated)
-          .then((user) => (console.log(`usermodel`, user))),
-          res.send({
-            'RESULT': 'ALREADY_ASSIGN',
-          })
+        res.send({
+          'RESULT': 'ALREADY_ASSIGN',
+        })
       }
     })
   // collegeModel.insertMany(req.body).then(() => (res.send('OK')))

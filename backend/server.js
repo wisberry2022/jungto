@@ -23,12 +23,12 @@ app.post('/assignMember', logRouter);
 app.post('/loginCheck', logRouter);
 app.post('/verify', logRouter);
 
-
 // 정토불교대학 입학신청 라우팅
 app.post('/collegeEntry', applicateRouter);
 
 // 유저 정보 관련 라우팅
 app.post('/getData', userRouter);
+app.post('/getCollegeList', userRouter);
 
 port = 5050;
 app.listen(process.env.PORT || port, () => {

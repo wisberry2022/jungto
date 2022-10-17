@@ -1,7 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const initialState = { logState: false };
+//localhost 확인용
+// const initialState = { logState: true, userId: 'keiko2015' };
+
+// 배포용
+const initialState = { logState: false, userId: '' };
 
 // 배포용
 const verifyData = createAsyncThunk('loginSlice/VERIFY', async (userState) => {
@@ -10,10 +14,10 @@ const verifyData = createAsyncThunk('loginSlice/VERIFY', async (userState) => {
       Authorization: userState,
     }
   })
-  if (result.data.ACCESS_RESULT === 'PERMITTED') {
-    return true;
+  if (result.data.ACCESS_RESULT) {
+    return Object.values(result.data);
   } else {
-    return false;
+    return Object.apply(result.data);
   }
 })
 
@@ -25,14 +29,14 @@ const verifyData = createAsyncThunk('loginSlice/VERIFY', async (userState) => {
 //         Authorization: userState,
 //       }
 //     })
-//     if (result.data.ACCESS_RESULT === 'PERMITTED') {
+//     if (result.data.ACCESS_RESULT) {
 //       return true;
 //     } else {
 //       return false;
 //     }
 //   }
 //   catch {
-//     return true;
+//     return [true, 'keiko2015'];
 //   }
 // })
 
@@ -54,12 +58,14 @@ const loginSlice = createSlice({
     })
     builder.addCase(verifyData.fulfilled, (state, action) => {
       console.log('fulfilled:', action.payload);
-      state.logState = action.payload;
+      state.logState = action.payload[0]
+      state.userId = action.payload[1]
     })
     builder.addCase(verifyData.rejected, (state, action) => {
       console.log('rejected:', action.payload);
       // locahost:3000 확인 용
-      // state.logState = action.payload;
+      // state.logState = action.payload[0];
+      // state.userId = action.payload[1];
       // 배포용 코드
       return state;
     })

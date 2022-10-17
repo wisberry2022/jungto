@@ -9,9 +9,9 @@ const TopInfo = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(verifyData(localStorage.userState))
-  }, [logState, dispatch])
+  // useEffect(() => {
+  //   dispatch(verifyData(localStorage.userState))
+  // }, [logState, dispatch])
 
   const logOut = () => {
     localStorage.removeItem('userState');
@@ -96,7 +96,7 @@ const Header = () => {
       <TopInfo />
       <h1>
         <Link to="/">
-          <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="hello" />
+          <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="jungto" />
         </Link>
       </h1>
       <GNB menu={multi_menu} />

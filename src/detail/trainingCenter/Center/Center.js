@@ -6,7 +6,6 @@ const Template = ({ templateData }) => {
   return (
     <div className={templateData.id % 2 === 0 ? 'center_intro even' : 'center_intro'}>
       <figure className={`left bg_set place0${templateData.id}`}></figure>
-      {console.log(`Center.js 데이터:`, templateData)}
       <div className="right">
         <h5>{templateData.title}</h5>
         <div className="phase_box">

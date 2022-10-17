@@ -38,7 +38,8 @@ router.post('/assignMember', async (req, res) => {
 router.post('/loginCheck', (req, res) => {
   let userId = { userId: req.body.userId }
   let password = { password: crypto.createHash('sha512').update(req.body.password).digest('base64') }
-  console.log(userId, password);
+  let totalSet = Object.assign(userId, password);
+  // console.log(userId, password);
   userModel.findOne(userId)
     .then((result) => {
       // 아이디 검사
@@ -51,7 +52,7 @@ router.post('/loginCheck', (req, res) => {
         });
       } else {
         // 비밀번호 검사
-        userModel.findOne(password)
+        userModel.findOne(totalSet)
           .then((result) => {
             // 비밀번호 불일치 시
             if (result === null) {
@@ -85,11 +86,13 @@ router.post('/verify', (req, res) => {
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
     if (err) {
       res.send({
-        ACCESS_RESULT: 'DENY',
+        ACCESS_RESULT: false,
+        ACCESS_DATA: 'NONE',
       })
     } else {
       res.send({
-        ACCESS_RESULT: 'PERMITTED',
+        ACCESS_RESULT: true,
+        ACCESS_DATA: decoded.userId,
       })
     }
   });
