@@ -1,4 +1,3 @@
-
 /**
  * 오늘 년,월,일을 yyyy-mm-dd 형태로 반환하는 함수
  **/
@@ -25,3 +24,13 @@ const checkPwd = (userPwd, realPwd) => {
 }
 
 export { checkPwd }
+
+/** 
+ * 객체 empty 여부 확인 함수
+ * @params obj => 실제 검사할 객체
+ * **/
+const isEmpty = (obj) => {
+  return Object.keys(obj).length === 0 && obj.constructor === Object;
+}
+
+export { isEmpty }

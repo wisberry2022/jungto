@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { GET } from '../../../store/applicateSlice';
+import { GET } from '../../../store/module/applicateSlice';
 import { getTodayForm } from '../../../funcSet/funcSet';
 import './Entry.scss';
 

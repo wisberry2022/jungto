@@ -21,7 +21,7 @@ const verifyData = createAsyncThunk('loginSlice/VERIFY', async (userState) => {
   }
 })
 
-//localhost 확인용
+// localhost 확인용
 // const verifyData = createAsyncThunk('loginSlice/VERIFY', async (userState) => {
 //   try {
 //     let result = await axios.post('/verify', {}, {

@@ -46,7 +46,7 @@ router.post('/getCollegeList', (req, res) => {
             res.status(400).send({
               ERROR_TYPE: 'NODATA',
               ACCESS_RESULT: false,
-              ACCESS_DATA: '',
+              ACCESS_DATA: {},
             })
             // 일치하는 리스트가 있을 경우
           } else {

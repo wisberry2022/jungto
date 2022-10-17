@@ -8,7 +8,7 @@ import historyReducer from './module/history';
 import loginReducer from './module/loginSlice';
 import trainReducer from './module/trainSlice';
 import userReducer from './module/userSlice';
-import applicateReducer from "./applicateSlice";
+import applicateReducer from "./module/applicateSlice";
 
 const reducers = combineReducers({
   review: reviewReducer,
