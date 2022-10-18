@@ -14,9 +14,9 @@ const getUserData = createAsyncThunk('userDataSlice/getUserData', async (userSta
       return errorData.ACCESS_DATA;
     })
     .then((res) => {
-      console.log('reducer:', res)
       return res.data;
     })
+
   return data;
 })
 
@@ -30,16 +30,13 @@ const userDataSlice = createSlice({
   },
   extraReducers: (builer) => {
     builer.addCase(getUserData.fulfilled, (state, action) => {
-      console.log(`payload`, action.payload);
       state = action.payload;
       return state;
     })
     builer.addCase(getUserData.rejected, (state, action) => {
-      console.log(`payload`, action.payload);
       return state;
     })
   }
-
 })
 
 export default userDataSlice.reducer;

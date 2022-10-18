@@ -16,6 +16,8 @@
 }
 
 form {
+  position: relative;
+
   .subscribe_table {
     margin-bottom: 4rem;
     border-top: 0.2rem solid #000;
@@ -113,5 +115,29 @@ form {
     padding: 1rem 2.5rem;
     font-size: 1.6rem;
     background-color: $bc;
+  }
+
+  .error_modal {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 0.1rem solid $sc;
+    padding: 5rem;
+    background-color: #f9f9f9;
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 2.6rem;
+      text-align: center;
+    }
+
+    button {
+      display: block;
+      margin: 0 auto;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+    }
   }
 }

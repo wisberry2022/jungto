@@ -122,3 +122,14 @@ export const StyledNormalPhase = styled.p`
 export const StyledDiv = styled.div`
   padding: ${props => `${props.padding} 0` || '1.5rem 0'};
 `
+
+/** 
+ * 정토회 커스텀 경고창(strong)(YES Params)
+ * @params marginBottom => margin-bottom 설정
+*/
+export const StyledWarningLine = styled.strong`
+  display: block;
+  margin-bottom: ${props => props.marginBottom || '1rem'};
+  font-size: 1.5rem;
+  color: #f00;
+`;

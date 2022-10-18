@@ -27,13 +27,30 @@ const collegeSchema = new mongoose.Schema({
   assignDate: { type: String, required: true },
 })
 
+// 월간정토 신청정보 콜렉션
+const magazineSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
+  price: { type: Number, required: true },
+  phone: { type: String, required: true },
+  subPhone: { type: String, required: true },
+  address: { type: String, required: true },
+  name: { type: String, required: true },
+  subName: { type: String, required: true },
+  startYear: { type: Number, required: true },
+  startMonth: { type: Number, required: true },
+  motivation: String,
+  duringYear: { type: Number, required: true },
+  account: { type: String, required: true },
+})
 
 const userModel = mongoose.model('UserSet', userSchema, "UserSet");
 const collegeModel = mongoose.model('College', collegeSchema, "College");
+const magazineModel = mongoose.model('Magazine', magazineSchema, 'Magazine');
 
 module.exports = function () {
   return ({
     collegeModel,
-    userModel
+    userModel,
+    magazineModel,
   })
 }

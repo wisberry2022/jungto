@@ -6,6 +6,7 @@ const router = require('./Router/router');
 const logRouter = require('./Router/logRouter');
 const applicateRouter = require('./Router/applicateRouter');
 const userRouter = require('./Router/userRouter');
+const assignRouter = require('./Router/assignRouter');
 
 app.use(express.static(path.join(__dirname, '../build')));
 
@@ -25,6 +26,9 @@ app.post('/verify', logRouter);
 
 // 정토불교대학 입학신청 라우팅
 app.post('/collegeEntry', applicateRouter);
+
+// 행사 신청 라우팅
+app.post('/assignMagazine', assignRouter);
 
 // 유저 정보 관련 라우팅
 app.post('/getData', userRouter);
