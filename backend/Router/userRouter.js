@@ -8,14 +8,19 @@ const { userModel, collegeModel } = user();
 
 dotenv.config();
 
+// 입학 신청 시 이미 입력된 정보 전송
 router.post('/getData', (req, res) => {
   const token = req.headers['authorization'];
   let userId;
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
     if (err) {
-      res.status(400).send();
+      res.status(400).send({
+        ERROR_TYPE: 'TOKEN_EXPIRED',
+        ACCESS_DATA: {},
+      });
     } else {
       userId = decoded.userId;
+      console.log('검증 성공!');
       userModel.findOne({ userId: userId })
         .then((result) => {
           res.send({
@@ -35,7 +40,9 @@ router.post('/getCollegeList', (req, res) => {
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
     if (err) {
       res.status(400).send({
-        ERROR_TYPE: 'TOKEN_EXPIRED'
+        ERROR_TYPE: 'TOKEN_EXPIRED',
+        ACCESS_RESULT: false,
+        ACCESS_DATA: {}
       })
     } else {
       console.log(req.body);

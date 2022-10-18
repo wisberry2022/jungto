@@ -1,0 +1,117 @@
+@import '../../../../commonCss/detailCommon.scss';
+
+.magazine_title {
+  margin-bottom: 5rem;
+}
+
+.intro_box {
+  >figure {
+    background-image: url('../../../../../../public/training_06.jpg');
+  }
+
+  .semi_titlebox {
+    border-bottom: 0.1rem solid #ddd;
+    padding-bottom: 3rem;
+  }
+}
+
+form {
+  .subscribe_table {
+    margin-bottom: 4rem;
+    border-top: 0.2rem solid #000;
+    border-bottom: 0.2rem solid #000;
+    font-size: 1.8rem;
+
+    thead {
+      display: none;
+    }
+
+    tbody {
+      tr {
+        th {
+          &.table_title {
+            border-bottom: 0.1rem solid #ddd;
+            padding: 5rem 0;
+            width: 12%;
+          }
+
+          &.table_stitle {
+            border-left: 0.1rem solid #ddd;
+            border-right: 0.1rem solid #ddd;
+            border-bottom: 0.1rem solid #ddd;
+            padding: 0 2em;
+            width: 15%;
+            font-size: 1.7rem;
+            font-weight: 400;
+            text-align: left;
+          }
+
+          background-color: #f9f9f9;
+        }
+
+        td {
+          border-bottom: 0.1rem solid #ddd;
+          padding: 1.5rem 1.5rem 1.5rem 5rem;
+          width: 100%;
+
+          .account {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            .account_box {
+              display: flex;
+              gap: 1.5rem;
+              font-size: 1.5rem;
+
+              strong {
+                display: block;
+              }
+            }
+          }
+
+          input[type="text"],
+          input[type="tel"] {
+            border: 0.1rem solid #d9d9d9;
+            padding: .5rem;
+            // background-color: #f9f9f9;
+            font-size: 1.9rem;
+          }
+
+          textarea {
+            border: 0.1rem solid #ddd;
+            padding: .5rem 0;
+            width: 80%;
+            height: 5rem;
+            font-size: 1.3rem;
+            resize: none;
+          }
+
+          .select_set {
+            display: flex;
+            gap: 1.5rem;
+
+            select {
+              border: 0.1rem solid #ddd;
+              padding-left: 2rem;
+              width: 20%;
+              height: 4rem;
+              font-size: 1.5rem;
+              text-align: left;
+            }
+          }
+
+        }
+      }
+    }
+  }
+
+  .btn {
+    display: block;
+    margin: 0 auto;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.6rem;
+    background-color: $bc;
+  }
+}

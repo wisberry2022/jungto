@@ -1,5 +1,6 @@
 import './training.scss';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Awakening = () => {
   return (
@@ -14,12 +15,12 @@ const Awakening = () => {
         <span>깨달음의 장</span>은 지금까지 한 번도 경험하지 못했을 새로운 삶의 세계로 당신을 안내합니다
       </p>
       <div className="btn_box">
-        <button className="btn">
+        <Link to="/mm_train/awakePlace" className="btn">
           활동 정보 및 일정
-        </button>
-        <button className="btn">
+        </Link>
+        <Link to="/mm_train/awakePlace" className="btn">
           신청하기
-        </button>
+        </Link>
       </div>
     </div>
   )
@@ -36,12 +37,12 @@ const Divide = () => {
         <span>나눔의 장</span>은 자신을 사랑할 수 있고 인간관계가 평화로워지는 수련입니다
       </p>
       <div className="btn_box">
-        <button className="btn">
+        <Link to="/mm_train/divide" className="btn">
           활동 정보 및 일정
-        </button>
-        <button className="btn">
+        </Link>
+        <Link to="/mm_train/divide" className="btn">
           신청하기
-        </button>
+        </Link>
       </div>
     </div>
   )
@@ -59,12 +60,12 @@ const Mk = () => {
         소심경, 예불문 등 학습을 하고 법사님과의 상담을 통해 내 마음을 알아차리고 가벼워지는 시간이 함께합니다
       </p>
       <div className="btn_box">
-        <button className="btn">
+        <Link to="/mm_train/templeStay" className="btn">
           활동 정보 및 일정
-        </button>
-        <button className="btn">
+        </Link>
+        <Link to="/mm_train/templeStay" className="btn">
           신청하기
-        </button>
+        </Link>
       </div>
     </div>
   )
@@ -83,12 +84,12 @@ const Wmk = () => {
         도반들과 땀 흘려 일하는 가운데 내 마음을 알아차리는 시간입니다
       </p>
       <div className="btn_box">
-        <button className="btn">
+        <Link to="/mm_train/templeStay" className="btn">
           활동 정보 및 일정
-        </button>
-        <button className="btn">
+        </Link>
+        <Link to="/mm_train/templeStay" className="btn">
           신청하기
-        </button>
+        </Link>
       </div>
     </div>
   )
@@ -106,12 +107,12 @@ const AwakeDays = () => {
         <span>자기 모습도 돌아보고, 반가운 얼굴도 만나보세요</span>
       </p>
       <div className="btn_box">
-        <button className="btn">
+        <Link to='/mm_train/daysAwake' className="btn">
           활동 정보 및 일정
-        </button>
-        <button className="btn">
+        </Link>
+        <Link to='/mm_train/daysAwake' className="btn">
           신청하기
-        </button>
+        </Link>
       </div>
     </div>
   )
@@ -128,17 +129,13 @@ const Magazine = () => {
         <span>월간정토</span>는 정기구독 수익금으로 점자 도서관, 교도소, 군부대, 병원, 복지관 등에 무료로 배포하여 마음이 밝아지는 부처님 법을 전하고 있습니다
       </p>
       <div className="btn_box">
-        <button className="btn">
-          활동 정보 및 일정
-        </button>
-        <button className="btn">
+        <Link to="/mm_intro/magazine" className="btn">
           구독 신청
-        </button>
+        </Link>
       </div>
     </div>
   )
 }
-
 
 const Training = () => {
   const [num, setNum] = useState(0);
@@ -149,7 +146,6 @@ const Training = () => {
     { id: 4, contents: 'wmk', component: <Wmk /> },
     { id: 5, contents: 'awake_days', component: <AwakeDays /> },
     { id: 6, contents: 'magazine', component: <Magazine /> },
-
   ];
 
   const list_map = [

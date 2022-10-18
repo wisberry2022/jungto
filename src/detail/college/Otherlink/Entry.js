@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { GET } from '../../../store/module/applicateSlice';
+import { CLEAR } from '../../../store/module/loginSlice';
 import { getTodayForm } from '../../../funcSet/funcSet';
 import './Entry.scss';
 
@@ -59,6 +60,7 @@ const Application = () => {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState('');
   const [info, setInfo] = useState({});
+  const dispatch = useDispatch();
 
   const logState = useSelector(state => state.login.logState);
   const jwtToken = localStorage.getItem('userState');
@@ -81,11 +83,17 @@ const Application = () => {
           authorization: jwtToken,
         }
       })
+        .catch((res) => {
+          localStorage.removeItem('userState');
+          if (res.response.data.ERROR_TYPE === 'TOKEN_EXPIRED') {
+            dispatch(CLEAR())
+          }
+        })
         .then((res) => {
           setInfo(res.data);
         })
     }
-  }, [logState])
+  }, [logState, dispatch])
 
 
   const submitHandling = async (e) => {

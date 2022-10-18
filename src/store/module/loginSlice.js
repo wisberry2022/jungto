@@ -49,6 +49,7 @@ const loginSlice = createSlice({
     },
     CLEAR: (state, action) => {
       state.logState = false;
+      state.userId = '';
     }
   },
   extraReducers: (builder) => {

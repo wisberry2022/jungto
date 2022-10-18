@@ -55,7 +55,7 @@ const UserBox = () => {
   const token = localStorage.getItem('userState');
   useEffect(() => {
     dispatch(getCollegeList([userId, token]))
-  }, [dispatch])
+  }, [dispatch, userId, token])
 
   const logState = useSelector(state => state.login.logState);
   return (
