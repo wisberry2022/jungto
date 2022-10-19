@@ -7,6 +7,7 @@ import { useRef, useState } from 'react';
 import { verifyData } from '../../store/module/loginSlice';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { getUserData } from '../../store/module/userdataSlice';
 
 const SignIn = () => {
   const [stateBool, setBool] = useState(true);
@@ -27,9 +28,10 @@ const SignIn = () => {
         password: pwdRef.current.value,
       }).catch((error) => { errorData = error.response.data })
       localStorage.setItem('userState', result.data.ACCESS_TOKEN);
-      dispatch(verifyData(result.data.ACCESS_TOKEN))
+      dispatch(verifyData(result.data.ACCESS_TOKEN));
       // 이전 URL에서 전달하였던 state로 가게 하는 코드
       // 만일 전달받은 state 없을 경우 루트로 이동
+      dispatch(getUserData(localStorage.getItem('userState')));
       console.log('에러 이전', location);
       if (location.state !== null) {
         console.log(`null 아님`, location)

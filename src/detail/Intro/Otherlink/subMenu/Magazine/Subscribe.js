@@ -217,11 +217,7 @@ const Table = () => {
 
 const Subscribe = () => {
   const dispatch = useDispatch();
-  const token = localStorage.getItem('userState');
   const logState = useSelector(state => state.login.logState);
-  useEffect(() => {
-    dispatch(getUserData(token));
-  }, [dispatch, token])
 
   return (
     <Styled.StyledDiv padding={'3rem'}>

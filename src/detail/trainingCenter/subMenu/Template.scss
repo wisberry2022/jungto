@@ -1,6 +1,6 @@
 @import '../../commonCss/detailCommon.scss';
 
-.desc_box {
+.train_intro_box {
   border-bottom: 0.1rem solid #ddd;
   padding-bottom: 4rem;
 
@@ -75,5 +75,96 @@
         }
       }
     }
+  }
+}
+
+.train_form {
+  .train_table {
+    margin-bottom: 4rem;
+    border-top: 0.2rem solid #000;
+    border-bottom: 0.2rem solid #000;
+    font-size: 1.8rem;
+
+    thead {
+      display: none;
+    }
+
+    tbody {
+      tr {
+        th {
+          &.table_title {
+            border-bottom: 0.1rem solid #ddd;
+            padding: 5rem 0;
+            width: 12%;
+          }
+
+          &.table_stitle {
+            border-left: 0.1rem solid #ddd;
+            border-right: 0.1rem solid #ddd;
+            border-bottom: 0.1rem solid #ddd;
+            padding: 0 2em;
+            width: 15%;
+            font-size: 1.7rem;
+            font-weight: 400;
+            text-align: left;
+          }
+
+          background-color: #f9f9f9;
+        }
+
+        td {
+          border-bottom: 0.1rem solid #ddd;
+          padding: 1.5rem 1.5rem 1.5rem 5rem;
+          width: 100%;
+
+          &.gender {
+            display: flex;
+            gap: 1.5rem;
+
+            .gender_box {
+              display: flex;
+              gap: 1rem;
+              font-size: 1.8rem;
+
+              strong {
+                display: block;
+              }
+            }
+          }
+
+          &.select_set {
+            display: flex;
+            gap: 1.5rem;
+
+            select {
+              border: 0.1rem solid #ddd;
+              padding-left: 2rem;
+              width: 20%;
+              height: 4rem;
+              font-size: 1.5rem;
+              text-align: left;
+            }
+
+            strong {
+              transform: translateY(40%);
+            }
+          }
+
+
+          input[type="text"],
+          input[type="tel"] {
+            border: 0.1rem solid #d9d9d9;
+            padding: .5rem;
+            font-size: 1.9rem;
+          }
+
+        }
+      }
+    }
+  }
+
+  .btn {
+    display: block;
+    margin: 0 auto;
   }
 }

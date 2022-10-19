@@ -1,6 +1,9 @@
 import * as Styled from '../../../funcSet/styledSet';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import Table from './Table';
 import './Template.scss';
+import { useEffect } from 'react';
+import { getUserData } from '../../../store/module/userdataSlice';
 
 const TrainGuide = ({ renderData }) => {
   return (
@@ -47,13 +50,19 @@ const TrainGuide = ({ renderData }) => {
 
 const Template = ({ id }) => {
   const trainData = useSelector(state => state.traintype)
+  // const token = localStorage.getItem('userState');
+  // const dispatch = useDispatch();
   const renderData = trainData[id];
+
+  // useEffect(() => {
+  //   dispatch(getUserData(token))
+  // }, [dispatch, token])
 
   return (
     <Styled.StyledSection className="template_section">
       {console.log(renderData, renderData.bg_link)}
       <Styled.StyledContainer>
-        <Styled.StyledDiv className="desc_box">
+        <Styled.StyledDiv className="train_intro_box">
           <Styled.StyledTitleBox marginBottom={'5rem'}>
             <Styled.StyledTitle align={'left'} width={'9%'}>
               {renderData.name}
@@ -68,6 +77,7 @@ const Template = ({ id }) => {
           <figure className={`item0${id + 1} bg_set`}></figure>
         </Styled.StyledDiv>
         <TrainGuide renderData={renderData.info} />
+        <Table id={id} />
       </Styled.StyledContainer>
     </Styled.StyledSection>
   )

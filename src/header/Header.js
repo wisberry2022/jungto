@@ -2,6 +2,7 @@ import './Header.scss'
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { verifyData } from '../store/module/loginSlice';
+import { DELETE } from '../store/module/userdataSlice';
 
 const TopInfo = () => {
   const logState = useSelector(state => state.login.logState);
@@ -11,6 +12,7 @@ const TopInfo = () => {
   const logOut = () => {
     localStorage.removeItem('userState');
     dispatch(verifyData(localStorage.userState));
+    dispatch(DELETE())
   }
 
   return (

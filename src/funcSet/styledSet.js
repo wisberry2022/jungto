@@ -130,10 +130,11 @@ export const StyledDiv = styled.div`
 
 /** 
  * 정토회 커스텀 경고창(strong)(YES Params)
+ * @params display => display 속성 설정
  * @params marginBottom => margin-bottom 설정
 */
 export const StyledWarningLine = styled.strong`
-  display: block;
+  display: ${props => props.display || 'block'};
   margin-bottom: ${props => props.marginBottom || '1rem'};
   font-size: 1.5rem;
   color: #f00;

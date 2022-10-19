@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { GET } from '../../../store/module/applicateSlice';
-import { CLEAR } from '../../../store/module/loginSlice';
 import { getTodayForm } from '../../../funcSet/funcSet';
 import './Entry.scss';
 
@@ -59,11 +58,7 @@ const Application = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
   const [message, setMessage] = useState('');
-  const [info, setInfo] = useState({});
-  const dispatch = useDispatch();
-
-  const logState = useSelector(state => state.login.logState);
-  const jwtToken = localStorage.getItem('userState');
+  const userData = useSelector(state => state.userdata);
 
   const dataList = [
     { id: 1, title: '아이디', type: "text", name: 'userId', placeholder: "아이디를 입력하세요", required_flag: true },
@@ -73,28 +68,6 @@ const Application = () => {
     { id: 5, title: '연락처', type: "tel", name: 'phone', placeholder: "연락처를 입력하세요", required_flag: true },
     { id: 6, title: '희망하는 입학일자', type: "date", name: 'date', placeholder: "입학일자를 입력하세요", required_flag: true },
   ];
-
-  // 로그인 되어있을 시 입력폼에 데이터를 미리 입력받기 위한 코드
-  // 로그인 되어있을 시(logState === true) 서버에서 데이터를 미리 받는 코드
-  useEffect(() => {
-    if (logState) {
-      axios.post('/getData', {}, {
-        headers: {
-          authorization: jwtToken,
-        }
-      })
-        .catch((res) => {
-          localStorage.removeItem('userState');
-          if (res.response.data.ERROR_TYPE === 'TOKEN_EXPIRED') {
-            dispatch(CLEAR())
-          }
-        })
-        .then((res) => {
-          setInfo(res.data);
-        })
-    }
-  }, [logState, dispatch])
-
 
   const submitHandling = async (e) => {
     e.preventDefault();
@@ -135,7 +108,7 @@ const Application = () => {
             {dataList.map(it => {
               return (
                 <tr key={it.id}>
-                  <InputForm data={it} defaultValue={info} />
+                  <InputForm data={it} defaultValue={userData} />
                 </tr>
               )
             })}
