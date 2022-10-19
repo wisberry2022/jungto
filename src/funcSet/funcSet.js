@@ -28,9 +28,15 @@ export { checkPwd }
 /** 
  * 객체 empty 여부 확인 함수
  * @params obj => 실제 검사할 객체
+ * @return 빈 객체일 경우 true, 빈 객체가 아닌 경우 false
  * **/
 const isEmpty = (obj) => {
-  return Object.keys(obj).length === 0 && obj.constructor === Object;
+  if (obj !== undefined) {
+    return Object.keys(obj).length === 0 && obj.constructor === Object;
+  } else {
+    return {}
+  }
+
 }
 
 export { isEmpty }

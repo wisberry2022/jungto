@@ -16,7 +16,7 @@ const Awakening = () => {
       </p>
       <div className="btn_box">
         <Link to="/mm_train/awakePlace" className="btn">
-          활동 정보 및 일정
+          수련안내
         </Link>
         <Link to="/mm_train/awakePlace" className="btn">
           신청하기
@@ -38,7 +38,7 @@ const Divide = () => {
       </p>
       <div className="btn_box">
         <Link to="/mm_train/divide" className="btn">
-          활동 정보 및 일정
+          수련안내
         </Link>
         <Link to="/mm_train/divide" className="btn">
           신청하기
@@ -61,7 +61,7 @@ const Mk = () => {
       </p>
       <div className="btn_box">
         <Link to="/mm_train/templeStay" className="btn">
-          활동 정보 및 일정
+          수련안내
         </Link>
         <Link to="/mm_train/templeStay" className="btn">
           신청하기
@@ -85,7 +85,7 @@ const Wmk = () => {
       </p>
       <div className="btn_box">
         <Link to="/mm_train/templeStay" className="btn">
-          활동 정보 및 일정
+          수련안내
         </Link>
         <Link to="/mm_train/templeStay" className="btn">
           신청하기
@@ -108,7 +108,7 @@ const AwakeDays = () => {
       </p>
       <div className="btn_box">
         <Link to='/mm_train/daysAwake' className="btn">
-          활동 정보 및 일정
+          수련안내
         </Link>
         <Link to='/mm_train/daysAwake' className="btn">
           신청하기

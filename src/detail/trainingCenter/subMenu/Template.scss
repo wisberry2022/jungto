@@ -1,0 +1,79 @@
+@import '../../commonCss/detailCommon.scss';
+
+.desc_box {
+  border-bottom: 0.1rem solid #ddd;
+  padding-bottom: 4rem;
+
+  figure {
+    width: 100%;
+    height: 35rem;
+  }
+
+  @for $i from 1 through 5 {
+    .item0#{$i} {
+      background-image: url('../../../../public/training_0#{$i}.jpg');
+    }
+  }
+}
+
+.train_guide {
+  border-bottom: 0.1rem solid #ddd;
+
+  .guide_title {
+    margin-bottom: 4rem;
+  }
+
+  .guide_box {
+    margin-bottom: 3.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .after_effect {
+      position: relative;
+      margin-bottom: 3rem;
+      font-size: 1.9rem;
+      font-weight: 600;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 140%;
+        left: 0;
+        width: 4rem;
+        height: 0.2rem;
+        background-color: $mc;
+      }
+    }
+
+    .guide_list {
+      >li {
+        margin-left: 2rem;
+        list-style-type: circle;
+
+        strong {
+          display: block;
+          padding: 1rem 0;
+          font-size: 1.7rem;
+          font-weight: 400;
+        }
+
+        .warning_list {
+          >li {
+            margin-left: 3rem;
+            list-style-type: disc;
+
+            strong {
+              display: block;
+              transform: translateY(5%);
+              font-size: 1.4rem;
+              font-weight: 400;
+              color: #999;
+            }
+          }
+        }
+      }
+    }
+  }
+}

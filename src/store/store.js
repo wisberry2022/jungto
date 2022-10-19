@@ -7,18 +7,20 @@ import reviewReducer from './module/reviewSlice';
 import historyReducer from './module/history';
 import loginReducer from './module/loginSlice';
 import trainReducer from './module/trainSlice';
-import userReducer from './module/userSlice';
 import applicateReducer from "./module/applicateSlice";
 import userdataReducer from "./module/userdataSlice";
+import appReducer from "./module/appSlice";
+import trainTypeReducer from "./module/trainTypeSlice";
 
 const reducers = combineReducers({
   review: reviewReducer,
   history: historyReducer,
   login: loginReducer,
   train: trainReducer,
-  user: userReducer,
+  app: appReducer,
   application: applicateReducer,
   userdata: userdataReducer,
+  traintype: trainTypeReducer,
 });
 
 const persistConfig = {

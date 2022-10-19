@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const user = require('../DB/user');
 
-const { userModel, collegeModel } = user();
+const { userModel, collegeModel, magazineModel } = user();
 
 dotenv.config();
 
@@ -35,36 +35,65 @@ router.post('/getData', (req, res) => {
 })
 
 // 대학신청리스트 확인 쿼리
-router.post('/getCollegeList', (req, res) => {
+router.post('/getAppList', (req, res) => {
   const token = req.headers['authorization'];
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
+  let result_data = {
+    ERROR_SET: {
+      ERROR_TYPE: '',
+      ACCESS_RESULT: true,
+      ACCESS_DATA: {}
+    },
+    collegeList: {}, magazineList: {}
+  };
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decoded) => {
     if (err) {
-      res.status(400).send({
+      result_data.ERROR_SET = {
         ERROR_TYPE: 'TOKEN_EXPIRED',
         ACCESS_RESULT: false,
-        ACCESS_DATA: {}
-      })
+        ACCESS_DATA: {},
+      };
+      res.status(400).send(result_data)
     } else {
-      console.log(req.body);
-      collegeModel.findOne(req.body)
+      console.log(`req.body`, req.body);
+      await collegeModel.findOne(req.body)
         .then((result) => {
           // 일치하는 리스트가 없을 경우
           if (result === null) {
-            res.status(400).send({
+            result_data.collegeList = {
               ERROR_TYPE: 'NODATA',
               ACCESS_RESULT: false,
               ACCESS_DATA: {},
-            })
+            }
             // 일치하는 리스트가 있을 경우
           } else {
-            console.log('일치하는 데이터가 있어요! 대박!', result)
-            res.send({
+            console.log('college 조회 결과', result)
+            result_data.collegeList = {
               ERROR_TYPE: '',
               ACCESS_RESULT: true,
               ACCESS_DATA: result,
-            })
+            }
           }
         });
+      await magazineModel.findOne(req.body)
+        .then((result) => {
+          console.log(`magazine 조회 결과`, result);
+          if (result === null) {
+            // 일치하는 리스트가 없을 경우
+            result_data.magazineList = {
+              ERROR_TYPE: 'NODATA',
+              ACCESS_RESULT: false,
+              ACCESS_DATA: {}
+            }
+          } else {
+            // 일치하는 리스트가 있을 경우
+            result_data.magazineList = {
+              ERROR_TYPE: '',
+              ACCESS_RESULT: true,
+              ACCESS_DATA: result,
+            }
+          }
+        })
+      res.send(result_data);
     }
   })
 })

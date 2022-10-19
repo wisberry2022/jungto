@@ -32,7 +32,7 @@ app.post('/assignMagazine', assignRouter);
 
 // 유저 정보 관련 라우팅
 app.post('/getData', userRouter);
-app.post('/getCollegeList', userRouter);
+app.post('/getAppList', userRouter);
 
 port = 5050;
 app.listen(process.env.PORT || port, () => {

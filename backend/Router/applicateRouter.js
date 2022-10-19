@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-// const collegeModel = require('../DB/user');
-// const userModel = require('../DB/user');
 const user = require('../DB/user');
 
 const { collegeModel, userModel } = user();

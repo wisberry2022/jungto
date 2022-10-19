@@ -1,20 +1,15 @@
+import * as Styled from '../../funcSet/styledSet';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getCollegeList } from "../../store/module/userSlice";
+import { getAppList } from "../../store/module/appSlice";
 import { isEmpty } from "../../funcSet/funcSet";
+import { NoneDisplay } from "./NoneDisplay";
+import MagazineList from "./MagazineList";
 import './MyPage.scss';
 
-const NoneDisplay = () => {
-  return (
-    <div className="none_display">
-      <strong>없음</strong>
-    </div>
-  )
-}
-
 const CollegeList = () => {
-  const collegeList = useSelector(state => state.user.collegeList);
+  const collegeList = useSelector(state => state.app.collegeList);
   const theadList = ['순번', '신청행사명', '신청자이름', '신청날짜', '희망입학날짜'];
   return (
     <div className="collegeList">
@@ -34,11 +29,11 @@ const CollegeList = () => {
         <tbody>
           {!isEmpty(collegeList) ?
             <tr>
-              <td>1</td>
-              <td>정토불교대학 입학</td>
-              <td>{collegeList.name}</td>
-              <td>{collegeList.assignDate}</td>
-              <td>{collegeList.desiredDate.slice(0, 10)}</td>
+              <Styled.StyledTableData padding={'2rem'}>1</Styled.StyledTableData>
+              <Styled.StyledTableData>정토불교대학 입학</Styled.StyledTableData>
+              <Styled.StyledTableData>{collegeList.name}</Styled.StyledTableData>
+              <Styled.StyledTableData>{collegeList.assignDate}</Styled.StyledTableData>
+              <Styled.StyledTableData>{collegeList.desiredDate.slice(0, 10)}</Styled.StyledTableData>
             </tr>
             :
             <NoneDisplay />}
@@ -54,7 +49,7 @@ const UserBox = () => {
   const userId = useSelector(state => state.login.userId);
   const token = localStorage.getItem('userState');
   useEffect(() => {
-    dispatch(getCollegeList([userId, token]))
+    dispatch(getAppList([userId, token]))
   }, [dispatch, userId, token])
 
   const logState = useSelector(state => state.login.logState);
@@ -84,6 +79,7 @@ const MyPage = () => {
           <p>신청한 행사내용, 후원내역 등을 확인할 수 있습니다</p>
         </div>
         <UserBox />
+        <MagazineList />
       </div>
     </section>
   )
