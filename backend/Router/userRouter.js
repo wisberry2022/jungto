@@ -4,7 +4,8 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const user = require('../DB/user');
 
-const { userModel, collegeModel, magazineModel } = user();
+const { userModel, collegeModel, magazineModel, trainModel } = user();
+
 
 dotenv.config();
 
@@ -43,7 +44,7 @@ router.post('/getAppList', (req, res) => {
       ACCESS_RESULT: true,
       ACCESS_DATA: {}
     },
-    collegeList: {}, magazineList: {}
+    collegeList: {}, magazineList: {}, trainList: {}
   };
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decoded) => {
     if (err) {
@@ -82,7 +83,7 @@ router.post('/getAppList', (req, res) => {
             result_data.magazineList = {
               ERROR_TYPE: 'NODATA',
               ACCESS_RESULT: false,
-              ACCESS_DATA: {}
+              ACCESS_DATA: {},
             }
           } else {
             // 일치하는 리스트가 있을 경우
@@ -90,6 +91,25 @@ router.post('/getAppList', (req, res) => {
               ERROR_TYPE: '',
               ACCESS_RESULT: true,
               ACCESS_DATA: result,
+            }
+          }
+        })
+      await trainModel.find(req.body)
+        .then((result) => {
+          console.log('trainModel 찾은 결과', result)
+          if (result === null) {
+            // 일치하는 리스트가 없을 경우
+            result_data.trainList = {
+              ERROR_TYPE: 'NODATA',
+              ACCESS_RESULT: false,
+              ACCESS_DATA: []
+            }
+          } else {
+            // 일치하는 리스트가 있을 경우
+            result_data.trainList = {
+              ERROR_TYPE: '',
+              ACCESS_RESULT: true,
+              ACCESS_DATA: result
             }
           }
         })

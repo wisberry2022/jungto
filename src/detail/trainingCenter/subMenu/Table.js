@@ -1,6 +1,8 @@
 import * as Styled from '../../../funcSet/styledSet';
 import { useSelector } from 'react-redux';
-import { useEffect, useReducer, useRef } from 'react';
+import { useEffect, useReducer, useState, useRef } from 'react';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 const Reducer = (state, action) => {
   switch (action.type) {
@@ -21,22 +23,42 @@ const TitleBox = () => {
   )
 }
 
+const ErrorModal = ({ setModal, MSG }) => {
+  const logState = useSelector(state => state.login.logState);
+  const location = useLocation();
+  return (
+    <div className="error_modal">
+      <p>
+        {MSG === "" ? "먼저 로그인해주세요!" : MSG}
+      </p>
+      <button type="button" onClick={() => (setModal(true))}>
+        <Link to={logState ? "/mm_train" : "/login"} state={{ locate: location.pathname }}>확인</Link>
+      </button>
+    </div>
+  )
+}
+
 const Table = ({ id }) => {
   const trainList = ['깨달음의 장', '나눔의 장', '49일 문경살이', '주말 문경살이', '일상에서 깨어있기'];
   const logState = useSelector(state => state.login.logState);
   const userData = useSelector(state => state.userdata);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [modal, setModal] = useState(true);
+  const [MSG, setMSG] = useState('');
+  const token = localStorage.getItem('userState');
   const selectRef = useRef();
   const idRef = useRef();
   const telRef = useRef();
   const mailRef = useRef();
-  const [data, dispatch] = useReducer(Reducer, {});
+  const [entryData, dispatch] = useReducer(Reducer, {});
 
   useEffect(() => {
     idRef.current.value = userData.userId ? userData.userId : null;
     telRef.current.value = userData.phone ? userData.phone : null;
     mailRef.current.value = userData.email ? userData.email : null;
     [selectRef.current, idRef.current, telRef.current, mailRef.current].map(it => dispatch({ type: 'ADD', name: it.name, value: it.value }))
-  }, [dispatch])
+  }, [dispatch, logState, userData])
 
   const addData = (e) => {
     const { name, value } = e.target;
@@ -46,6 +68,26 @@ const Table = ({ id }) => {
   const submitHandling = (e) => {
     e.preventDefault();
     if (logState) {
+      axios.post('/entryTrain', entryData, {
+        headers: {
+          authorization: token,
+        }
+      })
+        .catch((error) => {
+          console.log('axios 에러', error.response.data);
+          const { ERROR_MESSAGE } = error.response.data;
+          setMSG(ERROR_MESSAGE);
+          setModal(false);
+        })
+        .then((result) => {
+          if (result.data.ACCESS_RESULT) {
+            console.log('axios 성공')
+            navigate('/mm_train');
+          }
+        })
+    } else {
+      setModal(false);
+      setMSG('');
     }
   }
   return (
@@ -54,8 +96,7 @@ const Table = ({ id }) => {
         <TitleBox />
         {logState ? null : <Styled.StyledWarningLine>로그인 후 신청할 수 있습니다!</Styled.StyledWarningLine>}
         <form className="train_form" onSubmit={(e) => (submitHandling(e))}>
-          {console.log('reducer', data)}
-          <Styled.StyledTable className="train_table">
+          <Styled.StyledTable position={'relative'} className="train_table">
             <thead>
               <tr>
                 <th>범주</th>
@@ -136,6 +177,7 @@ const Table = ({ id }) => {
                 </td>
               </tr>
             </tbody>
+            {modal ? null : <ErrorModal setModal={setModal} MSG={MSG} />}
           </Styled.StyledTable>
           <button type="submit" className="btn">신청하기</button>
         </form>

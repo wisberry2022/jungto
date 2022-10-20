@@ -43,14 +43,29 @@ const magazineSchema = new mongoose.Schema({
   account: { type: String, required: true },
 })
 
+// 정토회 수련회 정보 콜렉션
+const trainSchema = mongoose.Schema({
+  trainType: { type: String, required: true },
+  userId: { type: String, required: true },
+  phone: { type: String, required: true },
+  name: { type: String, required: true },
+  email: String,
+  gender: { type: String, required: true },
+  desiredYear: { type: Number, required: true },
+  desiredMonth: { type: Number, required: true },
+})
+
+
 const userModel = mongoose.model('UserSet', userSchema, "UserSet");
 const collegeModel = mongoose.model('College', collegeSchema, "College");
 const magazineModel = mongoose.model('Magazine', magazineSchema, 'Magazine');
+const trainModel = mongoose.model('TrainEntry', trainSchema, 'TrainEntry');
 
 module.exports = function () {
   return ({
     collegeModel,
     userModel,
     magazineModel,
+    trainModel,
   })
 }

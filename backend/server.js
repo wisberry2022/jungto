@@ -29,6 +29,7 @@ app.post('/collegeEntry', applicateRouter);
 
 // 행사 신청 라우팅
 app.post('/assignMagazine', assignRouter);
+app.post('/entryTrain', assignRouter)
 
 // 유저 정보 관련 라우팅
 app.post('/getData', userRouter);

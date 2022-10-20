@@ -84,10 +84,10 @@ const Wmk = () => {
         도반들과 땀 흘려 일하는 가운데 내 마음을 알아차리는 시간입니다
       </p>
       <div className="btn_box">
-        <Link to="/mm_train/templeStay" className="btn">
+        <Link to="/mm_train/weekend" className="btn">
           수련안내
         </Link>
-        <Link to="/mm_train/templeStay" className="btn">
+        <Link to="/mm_train/weekend" className="btn">
           신청하기
         </Link>
       </div>

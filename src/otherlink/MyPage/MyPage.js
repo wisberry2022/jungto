@@ -6,6 +6,7 @@ import { getAppList } from "../../store/module/appSlice";
 import { isEmpty } from "../../funcSet/funcSet";
 import { NoneDisplay } from "./NoneDisplay";
 import MagazineList from "./MagazineList";
+import TrainList from './TrainList';
 import './MyPage.scss';
 
 const CollegeList = () => {
@@ -19,9 +20,9 @@ const CollegeList = () => {
           <tr>
             {theadList.map((it, idx) => {
               return (
-                <th key={idx}>
+                <Styled.StyledTableHead key={idx}>
                   {it}
-                </th>
+                </Styled.StyledTableHead>
               )
             })}
           </tr>
@@ -80,6 +81,7 @@ const MyPage = () => {
         </div>
         <UserBox />
         <MagazineList />
+        <TrainList />
       </div>
     </section>
   )

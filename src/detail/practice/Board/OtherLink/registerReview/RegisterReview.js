@@ -3,11 +3,12 @@ import { useDispatch } from 'react-redux';
 import { postData, ADD } from '../../../../../store/module/reviewSlice';
 import './RegisterReview.scss';
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getTodayForm } from '../../../../../funcSet/funcSet';
 
 
 const FormBox = () => {
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const titleRef = useRef();
@@ -19,6 +20,8 @@ const FormBox = () => {
 
   const registerHandling = (e) => {
     e.preventDefault();
+    dispatch(postData([titleRef.current.value, authorRef.current.value, emailRef.current.value, pwdRef.current.value, bodyRef.current.value, today]));
+    navigate('/mm_practice');
   }
 
   return (
@@ -38,8 +41,7 @@ const FormBox = () => {
           <textarea placeholder="후기를 작성해주세요!" id="body" ref={bodyRef} required></textarea>
         </div>
         <button type="submit" className="btn">
-          <Link to="/mm_practice" onClick={() => (dispatch(postData([titleRef.current.value, authorRef.current.value, emailRef.current.value, pwdRef.current.value, bodyRef.current.value, today])))}>등록하기</Link>
-          {/* <Link to="/mm_practice" onClick={() => (dispatch(ADD([titleRef.current.value, authorRef.current.value, emailRef.current.value, pwdRef.current.value, bodyRef.current.value, today])))}>등록하기</Link> */}
+          등록하기
         </button>
       </form>
     </div>

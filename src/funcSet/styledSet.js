@@ -153,8 +153,10 @@ export const StyledTable = styled.table`
 export const StyledTableHead = styled.th`
   border-bottom: 0.1rem solid #ddd;
   padding: 2rem 0;
+  width: 10%;
   font-size: 1.5rem;
   font-weight: 500;
+  text-align: center;
 `;
 
 /** 
@@ -168,7 +170,6 @@ export const StyledTableData = styled.td`
   font-weight: 400;
   background-color: #f9f9f9;
 `
-
 /** 
  * 정토회 커스텀 figure(YES Params)
  * @params width => figure width 설정

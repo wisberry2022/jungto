@@ -1,9 +1,7 @@
 import * as Styled from '../../../funcSet/styledSet';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Table from './Table';
 import './Template.scss';
-import { useEffect } from 'react';
-import { getUserData } from '../../../store/module/userdataSlice';
 
 const TrainGuide = ({ renderData }) => {
   return (
@@ -50,13 +48,7 @@ const TrainGuide = ({ renderData }) => {
 
 const Template = ({ id }) => {
   const trainData = useSelector(state => state.traintype)
-  // const token = localStorage.getItem('userState');
-  // const dispatch = useDispatch();
   const renderData = trainData[id];
-
-  // useEffect(() => {
-  //   dispatch(getUserData(token))
-  // }, [dispatch, token])
 
   return (
     <Styled.StyledSection className="template_section">

@@ -1,6 +1,8 @@
 import './Board.scss';
 import { Link } from 'react-router-dom';
 import { useState, useRef } from 'react';
+import { SEARCH } from '../../../store/module/reviewSlice';
+import { useDispatch } from 'react-redux';
 
 const NoneDisplay = () => {
   return (
@@ -93,9 +95,12 @@ const BoardTemplate = ({ postingData }) => {
 }
 
 const Board = ({ postingData }) => {
+  const searchRef = useRef();
+  const dispatch = useDispatch();
   return (
     <section className="board">
       <div className="container">
+        {console.log('Board.js', postingData)}
         <div className="semi_title">
           <h4>실천 기록장</h4>
           <p>
@@ -103,7 +108,15 @@ const Board = ({ postingData }) => {
           </p>
         </div>
         <div className="board_box">
-          <strong>게시판</strong>
+          <div className="top_set">
+            <strong>게시판</strong>
+            <div className="search_box">
+              <input type="search" name="search" ref={searchRef} placeholder="제목으로 검색을 입력해보세요" />
+              <button type="button" className="search_btn" onClick={() => (dispatch(SEARCH(searchRef.current.value)))}>
+                <i className="xi-search search_icon"></i>
+              </button>
+            </div>
+          </div>
           <BoardTemplate postingData={postingData} />
           <Link to="/mm_practice/reviewRegister" className="btn">
             <figure className="bg_set icon"></figure>
@@ -111,7 +124,6 @@ const Board = ({ postingData }) => {
           </Link>
         </div>
       </div>
-
     </section>
   )
 }

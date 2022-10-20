@@ -3,6 +3,178 @@ import axios from 'axios';
 
 const initialState = [];
 
+// const initialState = [
+//   {
+//     "_id": {
+//       "$oid": "6340a5d5e6a290dfcba72877"
+//     },
+//     "id": 1,
+//     "title": "감사합니다!",
+//     "author": "왕인서",
+//     "email": "ground444@naver.com",
+//     "password": "103030200",
+//     "contents": "수행과 실천 2일차~\n넘 좋아요~ 여러분들도 하세요!",
+//     "date": "2022-10-08",
+//     "__v": 0
+//   },
+//   {
+//     "_id": {
+//       "$oid": "6340a5d5e6a290dfcba72877"
+//     },
+//     "id": 2,
+//     "title": "수고하셨습니다!",
+//     "author": "김주은",
+//     "email": "ground444@naver.com",
+//     "password": "103030200",
+//     "contents": "수행과 실천 2일차~\n넘 좋아요~ 여러분들도 하세요!",
+//     "date": "2022-10-08",
+//     "__v": 0
+//   },
+//   {
+//     "_id": {
+//       "$oid": "6340a5d5e6a290dfcba72877"
+//     },
+//     "id": 3,
+//     "title": "수행5일차",
+//     "author": "오창석",
+//     "email": "ground444@naver.com",
+//     "password": "103030200",
+//     "contents": "수행과 실천 2일차~\n넘 좋아요~ 여러분들도 하세요!",
+//     "date": "2022-10-08",
+//     "__v": 0
+//   },
+//   {
+//     "_id": {
+//       "$oid": "6340a5d5e6a290dfcba72877"
+//     },
+//     "id": 4,
+//     "title": "완전 대박",
+//     "author": "김지훈",
+//     "email": "ground444@naver.com",
+//     "password": "103030200",
+//     "contents": "수행과 실천 2일차~\n넘 좋아요~ 여러분들도 하세요!",
+//     "date": "2022-10-08",
+//     "__v": 0
+//   },
+//   {
+//     "_id": {
+//       "$oid": "6340a5d5e6a290dfcba72877"
+//     },
+//     "id": 5,
+//     "title": "완전 좋아요",
+//     "author": "주경석",
+//     "email": "ground444@naver.com",
+//     "password": "103030200",
+//     "contents": "수행과 실천 2일차~\n넘 좋아요~ 여러분들도 하세요!",
+//     "date": "2022-10-08",
+//     "__v": 0
+//   },
+//   {
+//     "_id": {
+//       "$oid": "6340a5d5e6a290dfcba72877"
+//     },
+//     "id": 6,
+//     "title": "매일매일을 감사하며 살 수 있게 되었습니다",
+//     "author": "박진성",
+//     "email": "ground444@naver.com",
+//     "password": "103030200",
+//     "contents": "수행과 실천 2일차~\n넘 좋아요~ 여러분들도 하세요!",
+//     "date": "2022-10-08",
+//     "__v": 0
+//   },
+//   {
+//     "_id": {
+//       "$oid": "6340a5d5e6a290dfcba72877"
+//     },
+//     "id": 7,
+//     "title": "매일매일을 감사하며 살 수 있게 되었습니다",
+//     "author": "박진성",
+//     "email": "ground444@naver.com",
+//     "password": "103030200",
+//     "contents": "수행과 실천 2일차~\n넘 좋아요~ 여러분들도 하세요!",
+//     "date": "2022-10-08",
+//     "__v": 0
+//   },
+//   {
+//     "_id": {
+//       "$oid": "6340a5d5e6a290dfcba72877"
+//     },
+//     "id": 8,
+//     "title": "매일매일을 감사하며 살 수 있게 되었습니다",
+//     "author": "박진성",
+//     "email": "ground444@naver.com",
+//     "password": "103030200",
+//     "contents": "수행과 실천 2일차~\n넘 좋아요~ 여러분들도 하세요!",
+//     "date": "2022-10-08",
+//     "__v": 0
+//   },
+//   {
+//     "_id": {
+//       "$oid": "6340a5d5e6a290dfcba72877"
+//     },
+//     "id": 9,
+//     "title": "매일매일을 감사하며 살 수 있게 되었습니다",
+//     "author": "박진성",
+//     "email": "ground444@naver.com",
+//     "password": "103030200",
+//     "contents": "수행과 실천 2일차~\n넘 좋아요~ 여러분들도 하세요!",
+//     "date": "2022-10-08",
+//     "__v": 0
+//   },
+//   {
+//     "_id": {
+//       "$oid": "6340a5d5e6a290dfcba72877"
+//     },
+//     "id": 10,
+//     "title": "매일매일을 감사하며 살 수 있게 되었습니다",
+//     "author": "박진성",
+//     "email": "ground444@naver.com",
+//     "password": "103030200",
+//     "contents": "수행과 실천 2일차~\n넘 좋아요~ 여러분들도 하세요!",
+//     "date": "2022-10-08",
+//     "__v": 0
+//   },
+//   {
+//     "_id": {
+//       "$oid": "6340a5d5e6a290dfcba72877"
+//     },
+//     "id": 11,
+//     "title": "매일매일을 감사하며 살 수 있게 되었습니다",
+//     "author": "박진성",
+//     "email": "ground444@naver.com",
+//     "password": "103030200",
+//     "contents": "수행과 실천 2일차~\n넘 좋아요~ 여러분들도 하세요!",
+//     "date": "2022-10-08",
+//     "__v": 0
+//   },
+//   {
+//     "_id": {
+//       "$oid": "6340a5d5e6a290dfcba72877"
+//     },
+//     "id": 12,
+//     "title": "매일매일을 감사하며 살 수 있게 되었습니다",
+//     "author": "박진성",
+//     "email": "ground444@naver.com",
+//     "password": "103030200",
+//     "contents": "수행과 실천 2일차~\n넘 좋아요~ 여러분들도 하세요!",
+//     "date": "2022-10-08",
+//     "__v": 0
+//   },
+//   {
+//     "_id": {
+//       "$oid": "6340a5d5e6a290dfcba72877"
+//     },
+//     "id": 13,
+//     "title": "매일매일을 감사하며 살 수 있게 되었습니다",
+//     "author": "박진성",
+//     "email": "ground444@naver.com",
+//     "password": "103030200",
+//     "contents": "수행과 실천 2일차~\n넘 좋아요~ 여러분들도 하세요!",
+//     "date": "2022-10-08",
+//     "__v": 0
+//   },
+// ];
+
 const postData = createAsyncThunk('reviewSlice/postData', (dataArr) => {
   console.log('thunk 실행!', dataArr);
   let data = axios.post('/register', {
@@ -56,6 +228,12 @@ const reviewSlice = createSlice({
     UPDATE: (state, action) => {
       state = [...action.payload.map((it, idx) => ({ ...it, id: idx + 1 }))];
       return state;
+    },
+    SEARCH: (state, action) => {
+      console.log(`SEARCH payload`, action.payload);
+      const searchTarget = action.payload;
+      state = state.filter(it => { return it.title.split(' ').includes(searchTarget) })
+      return state;
     }
   },
   extraReducers: (builder) => {
@@ -72,5 +250,5 @@ const reviewSlice = createSlice({
 })
 
 export default reviewSlice.reducer;
-export const { ADD, UPDATE } = reviewSlice.actions;
+export const { ADD, UPDATE, SEARCH } = reviewSlice.actions;
 export { postData, updateData, deleteData }
