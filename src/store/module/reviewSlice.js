@@ -232,7 +232,8 @@ const reviewSlice = createSlice({
     SEARCH: (state, action) => {
       console.log(`SEARCH payload`, action.payload);
       const searchTarget = action.payload;
-      state = state.filter(it => { return it.title.split(' ').includes(searchTarget) })
+      // state = state.filter(it => { return it.title.split(' ').includes(searchTarget) })
+      state = state.filter(it => { return it.title.indexOf(searchTarget) > -1 });
       return state;
     }
   },

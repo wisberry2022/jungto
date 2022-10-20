@@ -58,7 +58,7 @@ const TrainList = () => {
                   <Styled.StyledTableData>{it.trainType}</Styled.StyledTableData>
                   <Styled.StyledTableData>{it.name}</Styled.StyledTableData>
                   <Styled.StyledTableData>{it.gender}</Styled.StyledTableData>
-                  <Styled.StyledTableData>{it.desiredYear}</Styled.StyledTableData>
+                  <Styled.StyledTableData>{String(it.desiredYear) + "-" + String(it.desiredMonth).padStart(2, '0')}</Styled.StyledTableData>
                 </tr>
               )
             })

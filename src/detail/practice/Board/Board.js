@@ -26,6 +26,8 @@ const BoardTemplate = ({ postingData }) => {
   const [divideListNum, setListNum] = useState(3);
   const [pageNum, setPage] = useState([0, divideNum]);
   const [listNum, setList] = useState([0, divideListNum]);
+  const searchRef = useRef();
+  const dispatch = useDispatch();
   const listRef = useRef();
 
   const toPrev = () => {
@@ -46,8 +48,29 @@ const BoardTemplate = ({ postingData }) => {
     )
   }
 
+  const enterSearch = (e) => {
+    if (e.key === 'Enter') {
+      dispatch(SEARCH(searchRef.current.value));
+      setPage([0, divideNum]);
+    }
+  }
+
   return (
     <>
+      <div className="top_set">
+        <strong>게시판</strong>
+        <div className="search_box">
+          <input type="search" name="search" ref={searchRef} onKeyDown={(e) => enterSearch(e)} placeholder="제목으로 검색을 입력해보세요" />
+          <div className="btn_box">
+            <button type="button" className="search_btn search" onClick={() => (dispatch(SEARCH(searchRef.current.value)), setPage([0, divideNum]))}>
+              <i className="xi-search search_icon"></i>
+            </button>
+            <button type="button" className="search_btn refresh" onClick={() => (window.location.reload())}>
+              <i className="xi-refresh search_icon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
       <table>
         <thead>
           <tr>
@@ -95,8 +118,6 @@ const BoardTemplate = ({ postingData }) => {
 }
 
 const Board = ({ postingData }) => {
-  const searchRef = useRef();
-  const dispatch = useDispatch();
   return (
     <section className="board">
       <div className="container">
@@ -108,15 +129,6 @@ const Board = ({ postingData }) => {
           </p>
         </div>
         <div className="board_box">
-          <div className="top_set">
-            <strong>게시판</strong>
-            <div className="search_box">
-              <input type="search" name="search" ref={searchRef} placeholder="제목으로 검색을 입력해보세요" />
-              <button type="button" className="search_btn" onClick={() => (dispatch(SEARCH(searchRef.current.value)))}>
-                <i className="xi-search search_icon"></i>
-              </button>
-            </div>
-          </div>
           <BoardTemplate postingData={postingData} />
           <Link to="/mm_practice/reviewRegister" className="btn">
             <figure className="bg_set icon"></figure>

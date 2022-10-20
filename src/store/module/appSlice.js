@@ -38,7 +38,7 @@ const getAppList = createAsyncThunk('appSlice/getAppList', async (dataArr) => {
         ACCESS_RESULT: true,
         ACCESS_DATA: {}
       },
-      collegeList: {}, magazineList: {}, trainList: {}
+      collegeList: {}, magazineList: {}, trainList: []
     }
     return errorData;
   }

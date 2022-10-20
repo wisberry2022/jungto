@@ -31,7 +31,7 @@
 
         .search_box {
           display: flex;
-          gap: 1.5rem;
+          gap: 1rem;
 
           input {
             padding: .5rem 1rem;
@@ -40,15 +40,22 @@
             background-color: #fff;
           }
 
-          .search_btn {
-            border: none;
-            background-color: $mc;
+          .btn_box {
+            display: flex;
+            gap: .5rem;
 
-            .search_icon {
-              font-size: 1.5rem;
-              color: #fff;
+            .search_btn {
+              border: none;
+              background-color: $mc;
+              cursor: pointer;
+
+              .search_icon {
+                font-size: 1.5rem;
+                color: #fff;
+              }
             }
           }
+
 
         }
       }
