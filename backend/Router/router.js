@@ -13,7 +13,6 @@ router.post('/register', (req, res) => {
 })
 
 router.put('/update', (req, res) => {
-  // console.log('update 요청 받음:', req.body);
   let dataId = { '_id': req.body._id };
   boardModel.updateOne(dataId, req.body)
     .then((result) => (res.send('OK!')));

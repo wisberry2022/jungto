@@ -17,7 +17,6 @@ const Practice = () => {
   useEffect(() => {
     axios.get('/mm_practice')
       .then((res) => (dispatch(UPDATE(res.data))));
-    console.log('Practice.js useEffect 실행!')
   }, [location.pathname, dispatch])
 
   return (

@@ -14,7 +14,6 @@ const CollegeList = () => {
   const theadList = ['순번', '신청행사명', '신청자이름', '신청날짜', '희망입학날짜'];
   return (
     <div className="collegeList">
-      {console.log(`collegeList 컴포넌트 내`, collegeList)}
       <table>
         <thead>
           <tr>

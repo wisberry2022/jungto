@@ -74,14 +74,12 @@ const Table = ({ id }) => {
         }
       })
         .catch((error) => {
-          console.log('axios 에러', error.response.data);
           const { ERROR_MESSAGE } = error.response.data;
           setMSG(ERROR_MESSAGE);
           setModal(false);
         })
         .then((result) => {
           if (result.data.ACCESS_RESULT) {
-            console.log('axios 성공')
             navigate('/mm_train');
           }
         })

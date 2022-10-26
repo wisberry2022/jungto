@@ -52,7 +52,6 @@ const Template = ({ id }) => {
 
   return (
     <Styled.StyledSection className="template_section">
-      {console.log(renderData, renderData.bg_link)}
       <Styled.StyledContainer>
         <Styled.StyledDiv className="train_intro_box">
           <Styled.StyledTitleBox marginBottom={'5rem'}>

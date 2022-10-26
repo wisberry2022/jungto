@@ -8,7 +8,6 @@ import axios from 'axios';
 const Reducer = (state, action) => {
   switch (action.type) {
     case 'ADD':
-      console.log(`usereducer inner`, action);
       state[action.name] = action.value;
     case 'SET':
       state[action.name] = action.value;
@@ -88,7 +87,6 @@ const Table = () => {
 
   useEffect(() => {
     if (userData.phone !== undefined) {
-      console.log('useEffect 내부', [idRef.current, appTelRef.current, subTelRef.current, addressRef.current]);
       idRef.current.value = userData.userId ? userData.userId : null;
       appTelRef.current.value = userData.phone ? userData.phone : null;
       subTelRef.current.value = userData.phone ? userData.phone : null;
@@ -107,7 +105,6 @@ const Table = () => {
       setData('motivation', motiveRef.current.value);
       await axios.post('/assignMagazine', assignData)
         .then((res) => {
-          console.log(res);
           if (res.data.ACCESS_RESULT) {
             navigate(-1);
           }
@@ -124,7 +121,6 @@ const Table = () => {
 
   return (
     <form onSubmit={(e) => (submitHandling(e))}>
-      {console.log(`userData`, userData)}
       <table className="subscribe_table">
         <thead>
           <tr>

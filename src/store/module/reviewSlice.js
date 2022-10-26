@@ -176,7 +176,6 @@ const initialState = [];
 // ];
 
 const postData = createAsyncThunk('reviewSlice/postData', (dataArr) => {
-  console.log('thunk 실행!', dataArr);
   let data = axios.post('/register', {
     title: dataArr[0],
     author: dataArr[1],
@@ -198,12 +197,10 @@ const updateData = createAsyncThunk('reviewSlice/updateData', async (dataArr) =>
     contents: dataArr[5],
     date: dataArr[6],
   });
-  console.log(`updateData 보기:`, data);
   return data;
 })
 
 const deleteData = createAsyncThunk('reviewSlice/deleteData', async (deleteInfo) => {
-  // console.log(`deleteData 내부 데이터:`, userPwd);
   let data = await axios.delete('/delete', {
     data: {
       _id: deleteInfo[0],
@@ -230,9 +227,7 @@ const reviewSlice = createSlice({
       return state;
     },
     SEARCH: (state, action) => {
-      console.log(`SEARCH payload`, action.payload);
       const searchTarget = action.payload;
-      // state = state.filter(it => { return it.title.split(' ').includes(searchTarget) })
       state = state.filter(it => { return it.title.indexOf(searchTarget) > -1 });
       return state;
     }
