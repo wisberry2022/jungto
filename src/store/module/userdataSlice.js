@@ -20,6 +20,7 @@ const getUserData = createAsyncThunk('userDataSlice/getUserData', async (userSta
       })
     return data;
   } catch {
+    console.log('try-catch')
     return {};
   }
 })
@@ -32,16 +33,19 @@ const userDataSlice = createSlice({
       return state;
     },
     DELETE: (state, action) => {
+      console.log('delete 실행!')
       return {};
     }
 
   },
   extraReducers: (builer) => {
     builer.addCase(getUserData.fulfilled, (state, action) => {
+      console.log(`userData fulfilled`, action.payload);
       state = action.payload;
       return state;
     })
     builer.addCase(getUserData.rejected, (state, action) => {
+      console.log('userdataSlice rejected', action.payload);
       return state;
     })
   }

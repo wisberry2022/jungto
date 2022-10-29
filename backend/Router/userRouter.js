@@ -6,6 +6,7 @@ const user = require('../DB/user');
 
 const { userModel, collegeModel, magazineModel, trainModel } = user();
 
+
 dotenv.config();
 
 // 입학 신청 시 이미 입력된 정보 전송
@@ -20,6 +21,7 @@ router.post('/getData', (req, res) => {
       });
     } else {
       userId = decoded.userId;
+      console.log('검증 성공!');
       userModel.findOne({ userId: userId })
         .then((result) => {
           res.send({
@@ -53,6 +55,7 @@ router.post('/getAppList', (req, res) => {
       };
       res.status(400).send(result_data)
     } else {
+      console.log(`req.body`, req.body);
       await collegeModel.findOne(req.body)
         .then((result) => {
           // 일치하는 리스트가 없을 경우
@@ -64,6 +67,7 @@ router.post('/getAppList', (req, res) => {
             }
             // 일치하는 리스트가 있을 경우
           } else {
+            console.log('college 조회 결과', result)
             result_data.collegeList = {
               ERROR_TYPE: '',
               ACCESS_RESULT: true,
@@ -73,6 +77,7 @@ router.post('/getAppList', (req, res) => {
         });
       await magazineModel.findOne(req.body)
         .then((result) => {
+          console.log(`magazine 조회 결과`, result);
           if (result === null) {
             // 일치하는 리스트가 없을 경우
             result_data.magazineList = {
@@ -91,6 +96,7 @@ router.post('/getAppList', (req, res) => {
         })
       await trainModel.find(req.body)
         .then((result) => {
+          console.log('trainModel 찾은 결과', result)
           if (result === null) {
             // 일치하는 리스트가 없을 경우
             result_data.trainList = {

@@ -9,6 +9,7 @@ const SubInfo = () => {
   const logState = useSelector(state => state.login.logState);
   return (
     <ul className="sub_info">
+      {console.log('MainVisual:', logState)}
       <li className="college">
         <strong>
           정토불교대학

@@ -8,8 +8,17 @@ import TrainCenter from './detail/trainingCenter/TrainCenter';
 import Practice from './detail/practice/Practice';
 import Total from './Total';
 import Layout from './detail/Layout';
+import { useEffect } from 'react';
+import { verifyData } from './store/module/loginSlice';
+import { useDispatch } from 'react-redux';
 
 function App() {
+  const dispatch = useDispatch();
+  const token = localStorage.getItem('userState');
+  useEffect(() => {
+    dispatch(verifyData(token))
+    console.log('useEffect 실행!');
+  }, [])
   return (
     <>
       <HashRouter>

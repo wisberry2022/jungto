@@ -76,6 +76,7 @@ const CheckModal = ({ realPwd, setBool, type, id, data }) => {
 
   return (
     <div className="checkbox">
+      {console.log('CheckModal 내부 data:', data)}
       <h4>비밀번호를 입력하세요</h4>
       <div className="check_pwd">
         <input type="password" ref={pwdRef} required />
@@ -96,6 +97,7 @@ const Post = ({ postingData }) => {
   const data = postingData[params.id - 1];
   return (
     <section className="post_view">
+      {console.log('지금 선택한 데이터:', data)}
       {postingData[params.id - 1]
         ?
         <div className="container">
