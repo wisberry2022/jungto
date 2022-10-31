@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { isEmpty } from '../../funcSet/funcSet';
 
 const MagazineList = () => {
-  const theadList = ['순번', '신청상품', '신청자/구독자', '구독희망시기', '구독기간'];
+  const theadList = ['순번', '신청상품', '신청자/구독자', '구독희망시기', '구독기간', '선택'];
   const magazineList = useSelector(state => state.app.magazineList);
   const trainList = useSelector(state => state.app.trainList);
   // const magazineList = {
@@ -47,10 +47,19 @@ const MagazineList = () => {
               <Styled.StyledTableData>{magazineList.name} / {magazineList.subName}</Styled.StyledTableData>
               <Styled.StyledTableData>{String(magazineList.startYear) + '-' + String(magazineList.startMonth).padStart(2, '0')}</Styled.StyledTableData>
               <Styled.StyledTableData>{magazineList.duringYear + '년'}</Styled.StyledTableData>
+              <Styled.StyledTableData>
+                <input type="checkbox" name="magazine_select" value={magazineList.userId} onChange={(e) => {
+                  console.log(e.target.value)
+                }} />
+              </Styled.StyledTableData>
             </tr>
           }
         </tbody>
       </Styled.StyledTable>
+      <div className="btn_box">
+        <button type="button" className="btn">수정하기</button>
+        <button type="button" className="btn">삭제하기</button>
+      </div>
     </Styled.StyledDiv>
   )
 }

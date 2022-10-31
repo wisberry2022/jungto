@@ -11,7 +11,7 @@ import './MyPage.scss';
 
 const CollegeList = () => {
   const collegeList = useSelector(state => state.app.collegeList);
-  const theadList = ['순번', '신청행사명', '신청자이름', '신청날짜', '희망입학날짜'];
+  const theadList = ['순번', '신청행사명', '신청자이름', '신청날짜', '희망입학날짜', '선택'];
   return (
     <div className="collegeList">
       {console.log(`collegeList 컴포넌트 내`, collegeList)}
@@ -35,11 +35,20 @@ const CollegeList = () => {
               <Styled.StyledTableData>{collegeList.name}</Styled.StyledTableData>
               <Styled.StyledTableData>{collegeList.assignDate}</Styled.StyledTableData>
               <Styled.StyledTableData>{collegeList.desiredDate.slice(0, 10)}</Styled.StyledTableData>
+              <Styled.StyledTableData>
+                <input type="checkbox" name="college_select" value={collegeList.userId} onChange={(e) => {
+                  console.log(e.target.value)
+                }} />
+              </Styled.StyledTableData>
             </tr>
             :
             <NoneDisplay />}
         </tbody>
       </table>
+      <div className="btn_box">
+        <button type="button" className="btn">수정하기</button>
+        <button type="button" className="btn">삭제하기</button>
+      </div>
     </div>
   )
 }

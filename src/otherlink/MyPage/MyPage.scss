@@ -62,6 +62,12 @@
       }
     }
 
+    .btn_box {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+
     .list_title {
       margin-bottom: 5rem;
 

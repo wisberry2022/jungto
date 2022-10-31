@@ -26,6 +26,9 @@ const getAppList = createAsyncThunk('appSlice/getAppList', async (dataArr) => {
         console.log('thunk에서 받은 것(오류)', errorData);
         if (!errorData.ACCESS_RESULT) {
           console.log('errorData', errorData.ACCESS_DATA);
+          if (errorData.ERROR_SET.ERROR_TYPE === 'TOKEN_EXPIRED') {
+
+          }
           return errorData;
         }
       })
@@ -56,13 +59,9 @@ const appSlice = createSlice({
     builder.addCase(getAppList.fulfilled, (state, action) => {
       console.log('reducer에서 받은 action.payload:', action.payload);
       const { ERROR_SET, collegeList, magazineList, trainList } = action.payload;
-      console.log('collegeList in reducer', collegeList);
-      console.log('magazineList in reducer', magazineList);
-      console.log('trainList in reducer', trainList);
       if (ERROR_SET.ACCESS_RESULT) {
         state.collegeList = collegeList.ACCESS_DATA;
         state.magazineList = magazineList.ACCESS_DATA;
-        // state.trainList = trainList.ACCESS_DATA.map((it, idx) => ({ ...it, 'id': idx + 1 }))
         if (trainList.ACCESS_RESULT) {
           state.trainList = trainList.ACCESS_DATA.map((it, idx) => ({ ...it, 'id': idx + 1 }))
         } else {
