@@ -14,12 +14,10 @@ const verifyData = createAsyncThunk('loginSlice/VERIFY', async (userState) => {
       Authorization: userState,
     }
   })
-  console.log('verifyData result data', result);
   if (result.data.ACCESS_RESULT) {
     return Object.values(result.data);
   } else {
-    console.log('loginSlice 검증 실패!', result.data)
-    return Object.values(result.data);
+    return Object.apply(result.data);
   }
 })
 
@@ -56,16 +54,13 @@ const loginSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(verifyData.pending, (state, action) => {
-      console.log('pending:', action.payload);
       return state;
     })
     builder.addCase(verifyData.fulfilled, (state, action) => {
-      console.log('fulfilled:', action.payload);
       state.logState = action.payload[0]
       state.userId = action.payload[1]
     })
     builder.addCase(verifyData.rejected, (state, action) => {
-      console.log('rejected:', action.payload);
       // locahost:3000 확인 용
       // state.logState = action.payload[0];
       // state.userId = action.payload[1];

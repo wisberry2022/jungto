@@ -24,8 +24,6 @@ router.post('/collegeEntry', (req, res) => {
         })
       }
     })
-  // collegeModel.insertMany(req.body).then(() => (res.send('OK')))
-  // res.send('OK!')
 })
 
 

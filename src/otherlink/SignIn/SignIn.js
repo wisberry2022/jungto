@@ -17,7 +17,6 @@ const SignIn = () => {
   const pwdRef = useRef();
   const dispatch = useDispatch();
   const logState = useSelector(state => state.login.logState);
-  // console.log(`이전 주소:`, location.state.locate);
 
   // 로그인 정보 입력 후 서버 전송
   const loginHandling = async (e) => {
@@ -33,16 +32,12 @@ const SignIn = () => {
       // 이전 URL에서 전달하였던 state로 가게 하는 코드
       // 만일 전달받은 state 없을 경우 루트로 이동
       dispatch(getUserData(localStorage.getItem('userState')));
-      console.log('에러 이전', location);
       if (location.state !== null) {
-        console.log(`null 아님`, location)
         navigate(location.state.locate);
       } else {
-        console.log(`null임`, location)
         navigate('/');
       }
     } catch (error) {
-      console.log(error)
       setBool(false);
     }
   }

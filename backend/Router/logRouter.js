@@ -39,7 +39,6 @@ router.post('/loginCheck', (req, res) => {
   let userId = { userId: req.body.userId }
   let password = { password: crypto.createHash('sha512').update(req.body.password).digest('base64') }
   let totalSet = Object.assign(userId, password);
-  // console.log(userId, password);
   userModel.findOne(userId)
     .then((result) => {
       // 아이디 검사

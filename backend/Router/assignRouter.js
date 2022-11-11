@@ -9,13 +9,10 @@ dotenv.config();
 
 // 월간정토 구독 라우팅
 router.post('/assignMagazine', (req, res) => {
-  console.log('aM 라우팅', req.body);
   let duplicate = { userId: req.body.userId };
   magazineModel.findOne(duplicate)
     .then((r) => {
-      console.log('중복결과:', r);
       if (r === null) {
-        console.log('등록하셧습니다!')
         magazineModel.insertMany(req.body)
           .then(() => (
             res.send({
@@ -30,7 +27,6 @@ router.post('/assignMagazine', (req, res) => {
             })
           })
       } else {
-        console.log('이미 구독하셨습니다!')
         res.status(400).send({
           ERROR_TYPE: '이미 구독하셨습니다!',
           ACCESS_RESULT: false,
@@ -55,14 +51,12 @@ router.post('/entryTrain', (req, res) => {
       trainModel.findOne(duplicate)
         .then((result) => {
           if (result === null) {
-            console.log(`중복없음`, duplicate)
             trainModel.insertMany(req.body).then(() => (res.status(200).send({
               ERROR_TYPE: '',
               ACCESS_RESULT: true,
               ERROR_MESSAGE: ''
             })))
           } else {
-            console.log(`중복있음`, duplicate)
             res.status(400).send({
               ERROR_TYPE: 'ALREADY_ENTRIED',
               ACCESS_RESULT: false,

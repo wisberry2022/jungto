@@ -121,7 +121,6 @@ const Board = ({ postingData }) => {
   return (
     <section className="board">
       <div className="container">
-        {console.log('Board.js', postingData)}
         <div className="semi_title">
           <h4>실천 기록장</h4>
           <p>
